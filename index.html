@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lite Wireless Headphones - Product Page</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Custom scrollbar styling for better aesthetics */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      html{
+        scroll-behavior: smooth;
+      }
+      ::-webkit-scrollbar-thumb {
+        background-color: #6366f1; /* Indigo-500 */
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+
+      /* Font configuration */
+      :root {
+        --font-inter: "Inter", sans-serif;
+      }
+      body {
+        font-family: var(--font-inter);
+      }
+
+      /* Utility class for image borders */
+      .color-selector {
+        transition: all 0.2s;
+        cursor: pointer;
+      }
+      .color-selector.active {
+        box-shadow: 0 0 0 3px #6366f1, 0 0 0 5px white; /* Custom active state */
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 antialiased">
+    <span id="message"
+      class="bg-indigo-600 p-3 w-lg rounded-full hover:bg-indigo-700 transition-colors text-white font-medium mt-20 ml-10"
+      style="position: fixed; z-index: 30; display: none;"
+    >
+      <span id="added">0</span> </span>
+    <!-- Header & Navigation -->
+    <header class="bg-white shadow-md sticky top-0 z-10">
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center"
+      >
+        <a
+          href="#"
+          class="text-3xl font-extrabold text-gray-800 hover:text-indigo-600 transition-colors"
+          >Lite</a
+        >
+        <nav class="hidden md:flex space-x-8 text-gray-600 font-medium">
+          <a
+            href="ecommerce.html"
+            class="hover:text-indigo-600 transition-colors"
+            >Shop</a
+          >
+          <a href="#" class="hover:text-indigo-600 transition-colors"
+            >New Arrivals</a
+          >
+          <a href="#" class="hover:text-indigo-600 transition-colors">About</a>
+        </nav>
+        <div class="flex items-center space-x-4">
+          <button
+            class="text-gray-600 hover:text-indigo-600 transition-colors"
+            aria-label="Search"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+          </button>
+          <button
+            class="text-gray-600 hover:text-indigo-600 transition-colors relative"
+            aria-label="Shopping Cart"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5H4M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+              />
+            </svg>
+            <span
+              class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full"
+              id="order"
+              >0</span
+            >
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content: Product Detail Section -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="lg:grid lg:grid-cols-2 lg:gap-12 xl:gap-16">
+        <!-- Product Images -->
+        <div class="flex flex-col-reverse lg:flex-row gap-4">
+          <!-- Small Thumbnail Gallery -->
+          <div
+            class="flex lg:flex-col space-x-3 lg:space-x-0 lg:space-y-3 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0 lg:w-24"
+          >
+            <!-- Note: Images are placeholders. In a real app, these would load actual images. -->
+            <button
+              class="thumb-btn flex-shrink-0 rounded-lg overflow-hidden border-2 border-transparent hover:border-indigo-500 transition-colors w-20 h-20 lg:w-full lg:h-20"
+              data-image="https://placehold.co/600x600/6366f1/ffffff?text=Main+Image"
+              data-color="Indigo"
+            >
+              <img
+                src="images/indigo.jpeg"
+                alt="Indigo Thumbnail"
+                class="w-full h-full object-cover"
+              />
+            </button>
+            <button
+              class="thumb-btn flex-shrink-0 rounded-lg overflow-hidden border-2 border-transparent hover:border-indigo-500 transition-colors w-20 h-20 lg:w-full lg:h-20"
+              data-image="https://placehold.co/600x600/1f2937/ffffff?text=Black+Image"
+              data-color="Midnight"
+            >
+              <img
+                src="images/midnight.jpeg"
+                alt="Black Thumbnail"
+                class="w-full h-full object-cover"
+              />
+            </button>
+            <button
+              class="thumb-btn flex-shrink-0 rounded-lg overflow-hidden border-2 border-transparent hover:border-indigo-500 transition-colors w-20 h-20 lg:w-full lg:h-20"
+              data-image="https://placehold.co/600x600/fca5a5/ffffff?text=Pink+Image"
+              data-color="Blush"
+            >
+              <img
+                src="images/pink rules.jpeg"
+                alt="Pink Thumbnail"
+                class="w-full h-full object-cover"
+              />
+            </button>
+          </div>
+
+          <!-- Main Display Image -->
+          <div
+            class="flex-1 rounded-xl shadow-2xl overflow-hidden mb-6 lg:mb-0"
+          >
+            <img
+              id="main-product-image"
+              src="images/indigo.jpeg"
+              alt="Lite Wireless Headphones in Indigo"
+              class="w-1/2x h-full object-cover"
+              onerror="this.onerror=null; this.src='https://placehold.co/800x800/ef4444/ffffff?text=Image+Load+Error';"
+            />
+          </div>
+        </div>
+
+        <!-- Product Details & Actions -->
+        <div class="lg:sticky lg:top-20 h-fit">
+          <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-2">
+            Lite Wireless Headphones
+          </h1>
+          <p class="text-xl text-indigo-600 font-semibold mb-4">
+            <span id="product-price">₦24,999.99</span>
+            <span class="text-gray-400 text-sm line-through ml-2"
+              >₦30,000.00</span
+            >
+          </p>
+
+          <!-- Rating -->
+          <div class="flex items-center space-x-2 mb-6 text-yellow-500">
+            <!-- 5 Star Rating SVG/Emoji -->
+            <span class="text-xl">★★★★★</span>
+            <span class="text-gray-500 text-sm">(4,210 Reviews)</span>
+          </div>
+
+          <!-- Short Description -->
+          <p class="text-gray-600 leading-relaxed mb-6">
+            Experience pure sound with the Lite Wireless Headphones. Featuring
+            industry-leading noise cancellation, 30 hours of battery life, and
+            ultra-plush earcups. Perfect for travel, work, or relaxation.
+          </p>
+
+          <!-- Color Options -->
+          <div class="mb-6">
+            <p class="text-lg font-semibold text-gray-800 mb-2">
+              Color:
+              <span id="selected-color-name" class="font-normal text-indigo-600"
+                >Indigo</span
+              >
+            </p>
+            <div class="flex space-x-3">
+              <!-- Indigo -->
+              <div
+                class="color-selector active w-8 h-8 rounded-full bg-indigo-600 shadow-md"
+                data-image="images/indigo.jpeg"
+                data-color-name="Indigo"
+                data-hex="#6366f1"
+                data-price="249.99"
+              ></div>
+              <!-- Midnight Black -->
+              <div
+                class="color-selector w-8 h-8 rounded-full bg-gray-900 shadow-md"
+                data-image="images/midnight.jpeg"
+                data-color-name="Midnight"
+                data-hex="#1f2937"
+                data-price="249.99"
+              ></div>
+              <!-- Blush Pink -->
+              <div
+                class="color-selector w-8 h-8 rounded-full bg-red-300 shadow-md"
+                data-image="images/pink rules.jpeg"
+                data-color-name="Blush"
+                data-hex="#fca5a5"
+                data-price="259.99"
+              ></div>
+            </div>
+          </div>
+
+          <!-- Quantity & Purchase Buttons -->
+          <div class="flex space-x-4 mb-8">
+            <input
+              type="number"
+              min="1"
+              value="1"
+              id="number"
+              placeholder="1"
+              class="w-20 rounded-xl border border-gray-300 text-center p-3 text-lg focus:border-indigo-500 focus:ring-indigo-500 shadow-sm"
+              aria-label="Quantity"
+            />
+
+            <button
+              onclick="orders()"
+              class="flex-1 flex items-center justify-center p-4 bg-indigo-600 text-white font-bold rounded-xl shadow-lg hover:bg-indigo-700 transition-all duration-200 uppercase tracking-wider text-lg transform hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-indigo-500 focus:ring-opacity-50"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6 mr-2"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+                />
+              </svg>
+              Add to Cart
+            </button>
+          </div>
+
+          <!-- Shipping & Availability -->
+          <div class="border-t border-b border-gray-200 py-4 space-y-3">
+            <div class="flex items-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6 text-green-500 mr-3"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 4.016A11.955 11.955 0 0012 21.012a11.955 11.955 0 008.618-4.016z"
+                />
+              </svg>
+              <span class="text-gray-700 font-medium">In Stock</span> - Ready to
+              ship within 24 hours.
+            </div>
+            <div class="flex items-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6 text-gray-500 mr-3"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                />
+              </svg>
+              <span class="text-gray-700 font-medium">Free Shipping</span> on
+              all orders over ₦10000.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Detailed Product Information Tabs -->
+      <div class="mt-16 border-t border-gray-200 pt-12">
+        <div class="flex border-b border-gray-200 space-x-8">
+          <button
+            onclick="showTab('description')"
+            id="tab-description"
+            class="tab-button text-lg font-medium py-3 border-b-2 border-indigo-600 text-indigo-600 transition-colors"
+          >
+            Description
+          </button>
+          <button
+            onclick="showTab('specs')"
+            id="tab-specs"
+            class="tab-button text-lg font-medium py-3 border-b-2 border-transparent text-gray-500 hover:text-indigo-600 hover:border-indigo-300 transition-colors"
+          >
+            Specifications
+          </button>
+          <button
+            onclick="showTab('reviews')"
+            id="tab-reviews"
+            class="tab-button text-lg font-medium py-3 border-b-2 border-transparent text-gray-500 hover:text-indigo-600 hover:border-indigo-300 transition-colors"
+          >
+            Reviews (4.9)
+          </button>
+        </div>
+
+        <!-- Tab Content -->
+        <div
+          id="content-description"
+          class="tab-content py-6 text-gray-600 leading-loose"
+        >
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">
+            Unmatched Clarity and Comfort
+          </h3>
+          <p class="mb-4">
+            The Lite headphones redefine the listening experience. Our
+            proprietary audio drivers deliver rich, deep bass and crystal-clear
+            highs, putting you right in the studio. The ergonomic design
+            features memory foam cushions that conform perfectly to your ears,
+            ensuring comfort during marathon listening sessions.
+          </p>
+          <ul class="list-disc list-inside space-y-2 ml-4">
+            <li>
+              Acoustic Transparency Mode: Seamlessly blend music with your
+              environment.
+            </li>
+            <li>
+              Fast Charge Technology: 10 minutes of charge gives you 5 hours of
+              playback.
+            </li>
+            <li>Durable, lightweight aluminum construction.</li>
+          </ul>
+        </div>
+
+        <div
+          id="content-specs"
+          class="tab-content hidden py-6 text-gray-600 leading-loose"
+        >
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">
+            Technical Details
+          </h3>
+          <dl class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
+            <div class="py-2 border-b border-gray-100">
+              <dt class="font-medium text-gray-800">Connection:</dt>
+              <dd class="ml-0 md:ml-4">Bluetooth 5.3 (aptX support)</dd>
+            </div>
+            <div class="py-2 border-b border-gray-100">
+              <dt class="font-medium text-gray-800">Battery Life:</dt>
+              <dd class="ml-0 md:ml-4">Up to 30 hours (ANC Off)</dd>
+            </div>
+            <div class="py-2 border-b border-gray-100">
+              <dt class="font-medium text-gray-800">Noise Cancellation:</dt>
+              <dd class="ml-0 md:ml-4">Hybrid Active Noise Cancellation</dd>
+            </div>
+            <div class="py-2 border-b border-gray-100">
+              <dt class="font-medium text-gray-800">Weight:</dt>
+              <dd class="ml-0 md:ml-4">285 grams</dd>
+            </div>
+            <div class="py-2 border-b border-gray-100">
+              <dt class="font-medium text-gray-800">Charging Port:</dt>
+              <dd class="ml-0 md:ml-4">USB-C</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div
+          id="content-reviews"
+          class="tab-content hidden py-6 text-gray-600 leading-loose"
+        >
+          <h3 class="text-2xl font-bold text-gray-900 mb-6">
+            Customer Feedback
+          </h3>
+
+          <!-- Review 1 -->
+          <div class="border-b pb-4 mb-4">
+            <div class="flex items-center mb-2">
+              <span class="text-lg text-yellow-500 mr-2">★★★★★</span>
+              <span class="font-semibold text-gray-800">A game changer!</span>
+            </div>
+            <p class="text-sm text-gray-500 mb-2">
+              Posted by Alex K. on November 15, 2025
+            </p>
+            <p>
+              The ANC is phenomenal. I use these every day on my commute, and
+              the quality is far better than my previous pair. Worth every
+              penny!
+            </p>
+          </div>
+
+          <!-- Review 2 -->
+          <div class="border-b pb-4 mb-4">
+            <div class="flex items-center mb-2">
+              <span class="text-lg text-yellow-500 mr-2">★★★★☆</span>
+              <span class="font-semibold text-gray-800"
+                >Great sound, long battery.</span
+              >
+            </div>
+            <p class="text-sm text-gray-500 mb-2">
+              Posted by Sarah M. on October 28, 2025
+            </p>
+            <p>
+              My only minor complaint is that the Blush color is a bit lighter
+              than expected, but the audio quality more than makes up for it.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white mt-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <!-- Column 1 -->
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Shop</h4>
+            <ul class="space-y-2 text-sm text-gray-300">
+              <li>
+                <a href="#" class="hover:text-indigo-400 transition-colors"
+                  >Headphones</a
+                >
+              </li>
+              <li>
+                <a href="earbuds.html" class="hover:text-indigo-400 transition-colors"
+                  >Earbuds</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-indigo-400 transition-colors"
+                  >Speakers</a
+                >
+              </li>
+            </ul>
+          </div>
+          <!-- Column 2 -->
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Company</h4>
+            <ul class="space-y-2 text-sm text-gray-300">
+              <li>
+                <a href="#" class="hover:text-indigo-400 transition-colors"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-indigo-400 transition-colors"
+                  >Careers</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-indigo-400 transition-colors"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+          <!-- Column 3 -->
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Support</h4>
+            <ul class="space-y-2 text-sm text-gray-300">
+              <li>
+                <a href="#" class="hover:text-indigo-400 transition-colors"
+                  >FAQ</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-indigo-400 transition-colors"
+                  >Shipping & Returns</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-indigo-400 transition-colors"
+                  >Warranty</a
+                >
+              </li>
+            </ul>
+          </div>
+          <!-- Column 4: Newsletter -->
+          <div class="col-span-2 md:col-span-1">
+            <h4 class="text-lg font-semibold mb-4">Stay Connected</h4>
+            <p class="text-sm text-gray-300 mb-4">
+              Subscribe for exclusive offers and updates.
+            </p>
+            <form class="flex">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                name="email"
+                id="mail"
+                required
+                class="p-3 rounded-l-lg border-none focus:ring-0 text-gray-900 flex-1"
+              />
+              <button
+                class="bg-indigo-600 p-3 rounded-r-lg hover:bg-indigo-700 transition-colors text-white font-medium"
+                id="join"
+                onclick=""
+              >
+                Join
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <div
+          class="mt-8 border-t border-gray-700 pt-6 text-center text-sm text-gray-500"
+        >
+          &copy; 2025 Young Lite Tech. All rights reserved.
+        </div>
+      </div>
+    </footer>
+    <!-- JavaScript for Product Interactivity -->
+    <script>
+      // order
+      let input = document.getElementById("number");
+      let output = document.getElementById("order");
+      let message=document.getElementById("message")
+      let added = document.getElementById("added")
+
+      function orders() {
+        output.innerHTML = input.value;
+        added.innerHTML=input.value
+        display()
+      }
+      function display(){
+        message.style.display=""
+        setTimeout(()=>{
+            message.style.display="none"
+        },2000)
+        if(input.value <="1"){
+            message.innerHTML= input.value + " item added to cart"
+        }
+        if(input.value > "1"){
+            message.innerHTML= input.value + " items added to cart"
+        }
+    }
+      // email submission and validation
+      let btn = document.getElementById("join");
+      btn.innerHTML = "joined";
+      setTimeout(() => {
+        btn.innerHTML = "join";
+      }, 3000);
+      // Data structure for the different color variants
+      const variants = {
+        Indigo: { image: "images/indigo.jpeg", price: 24999.99 },
+        Midnight: { image: "images/midnight.jpeg", price: 25999.99 },
+        Blush: { image: "images/pink rules.jpeg", price: 24999.99 },
+      };
+
+      // Function to handle color and thumbnail selection
+      function updateProduct(colorName) {
+        const variant = variants[colorName];
+        if (!variant) return;
+
+        // 1. Update Main Image
+        document.getElementById("main-product-image").src = variant.image;
+        document.getElementById(
+          "main-product-image"
+        ).alt = `Lite Wireless Headphones in ${colorName}`;
+
+        // 2. Update Color Name and Price
+        document.getElementById("selected-color-name").textContent = colorName;
+        document.getElementById(
+          "product-price"
+        ).textContent = `$${variant.price.toFixed(2)}`;
+
+        // 3. Update Active State of Color Selectors
+        document.querySelectorAll(".color-selector").forEach((el) => {
+          el.classList.remove("active");
+          if (el.getAttribute("data-color-name") === colorName) {
+            el.classList.add("active");
+          }
+        });
+
+        // 4. Update Active State of Thumbnail Buttons
+        document.querySelectorAll(".thumb-btn").forEach((el) => {
+          el.classList.remove("border-indigo-500");
+          if (el.getAttribute("data-color") === colorName) {
+            el.classList.add("border-indigo-500");
+          }
+        });
+      }
+
+      // Function to handle the navigation tabs (Description, Specs, Reviews)
+      function showTab(tabId) {
+        // Hide all content tabs
+        document.querySelectorAll(".tab-content").forEach((content) => {
+          content.classList.add("hidden");
+        });
+        // Reset all tab buttons
+        document.querySelectorAll(".tab-button").forEach((button) => {
+          button.classList.remove("border-indigo-600", "text-indigo-600");
+          button.classList.add(
+            "border-transparent",
+            "text-gray-500",
+            "hover:border-indigo-300"
+          );
+        });
+
+        // Show the selected content tab
+        document.getElementById(`content-${tabId}`).classList.remove("hidden");
+
+        // Set the active style for the selected button
+        const activeTabButton = document.getElementById(`tab-${tabId}`);
+        activeTabButton.classList.add("border-indigo-600", "text-indigo-600");
+        activeTabButton.classList.remove(
+          "border-transparent",
+          "text-gray-500",
+          "hover:border-indigo-300"
+        );
+      }
+
+      // Attach event listeners when the page loads
+      document.addEventListener("DOMContentLoaded", () => {
+        // Setup listeners for color selection
+        document.querySelectorAll(".color-selector").forEach((el) => {
+          el.addEventListener("click", () => {
+            updateProduct(el.getAttribute("data-color-name"));
+          });
+        });
+
+        // Setup listeners for thumbnail selection
+        document.querySelectorAll(".thumb-btn").forEach((el) => {
+          el.addEventListener("click", () => {
+            updateProduct(el.getAttribute("data-color"));
+          });
+        });
+
+        // Set initial active thumbnail border
+        document
+          .querySelector('.thumb-btn[data-color="Indigo"]')
+          .classList.add("border-indigo-500");
+      });
+    </script>
+  </body>
+</html>

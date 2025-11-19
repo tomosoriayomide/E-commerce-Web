@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/newstyle.css" />
+  </head>
+  <body>
+    <div class="success" id="success">
+      <p>SUCCESS!!!</p>
+    </div>
+    <div id="menu" class="menu">
+      <img src="/images/icon-close.svg" alt="" class="cancelMenu" onclick="closeMenu()"/>
+      <a href="index.html" id="collect" onclick="collect()" onload="collect()" style="color: gray; text-decoration: none;" >Collections</a>
+      <p id="male" onclick="men()">Men</p>
+      <p id="female" onclick="women()">Women</p>
+      <p id="story" onclick="story()">About</p>
+      <p id="phone" onclick="phone()">Contact</p>
+    </div>
+    <div class="bgm" id="bgm" onclick="closeMenu()"></div>
+    <div id="message">
+      <p>
+        <span id="numbre"></span> <span id="whole">items</span> added to cart
+      </p>
+    </div>
+    <div id="cart">
+      <h3 class="name">Cart</h3>
+
+      <div id="contents">
+        <p class="state" id="emptyCart">Your cart is empty.</p>
+        <div id="active">
+          <div class="topFilled">
+            <div class="img">
+              <img
+                src="/images/image-product-1-thumbnail.jpg"
+                alt=""
+                class="thumb"
+              />
+            </div>
+            <div class="business">
+              <p class="text">Fall Limited Edition Sneakers</p>
+              <!-- <br> -->
+              <p class="price">
+                $125.00 x <span id="ordered">1</span
+                ><span id="outcome">$125</span><span id="dots">.00</span>
+              </p>
+            </div>
+            <div id="delete">
+              <img
+                src="/images/icon-delete.svg"
+                alt=""
+                class="delete"
+                onclick="Clear()"
+              />
+            </div>
+          </div>
+          <button class="check" onclick="success()">Checkout</button>
+        </div>
+      </div>
+    </div>
+    <div class="bgt" id="bgt">
+      <div class="bgtrans" onclick="cancel()"></div>
+      <div class="lightbox">
+        <img
+          src="/images/icon-close.svg"
+          alt=""
+          class="cancel"
+          onclick="cancel()"
+        />
+        <div class="lightpic">
+          <img
+            src="/images/icon-previous.svg"
+            alt=""
+            class="arrows previous"
+            onclick="plusSlides(-1)"
+          />
+          <img
+            src="/images/icon-previous.svg"
+            alt=""
+            class="arrows next"
+            onclick="plusSlides(1)"
+          />
+          <div class="top">
+            <div class="pictop lightboxpic">
+              <img src="./images/image-product-1.jpg" alt="" class="picture" />
+            </div>
+            <div class="pictop lightboxpic">
+              <img src="./images/image-product-2.jpg" alt="" class="picture" />
+            </div>
+            <div class="pictop lightboxpic">
+              <img src="./images/image-product-3.jpg" alt="" class="picture" />
+            </div>
+            <div class="pictop lightboxpic">
+              <img src="./images/image-product-4.jpg" alt="" class="picture" />
+            </div>
+          </div>
+          <br />
+          <div class="bottom">
+            <div class="small">
+              <img
+                src="/images/image-product-1-thumbnail.jpg"
+                alt=""
+                class="lightboxFirst"
+                onclick="currentSlide(1)"
+              />
+              <img
+                src="/images/image-product-2-thumbnail.jpg"
+                alt=""
+                class="lightboxFirst"
+                onclick="currentSlide(2)"
+              />
+              <img
+                src="/images/image-product-3-thumbnail.jpg"
+                alt=""
+                class="lightboxFirst"
+                onclick="currentSlide(3)"
+              />
+              <img
+                src="/images/image-product-4-thumbnail.jpg"
+                alt=""
+                class="lightboxFirst"
+                onclick="currentSlide(4)"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cont">
+      <nav>
+        <!-- <div class="diva"> -->
+          <img src="./images/icon-menu.svg" alt="" class="ham" onclick="openMenu()" />
+          <img src="./images/logo.svg" alt="" class="logos" />
+        <!-- </div> -->
+        <div class="pt1">
+          <div class="picc">
+            <img src="./images/logo.svg" alt="" class="logo" />
+          </div>
+          <div class="align">
+            <a href="index.html"  class="hover" id="hover" onclick="color()" style="color: gray; text-decoration: none; padding-bottom: 40px;"   >Collections</a>
+            <span style="color: gray; text-decoration: none; border-bottom: 3px solid hsl(26, 100%, 55%); padding-bottom: 40px;" href="index.html" class="hover" id="hovera" onclick="colors()">Men</span>
+            <span class="hover" id="hoverb" onclick="colored()">Women</span>
+            <span class="hover" id="hoverc" onclick="colora()">About</span>
+            <span class="hover" id="hoverd" onclick="colorb()">Contact</span>
+          </div>
+        </div>
+        <div class="cartall">
+          <div class="imgs">
+            <p id="cartNo">0</p>
+            <img
+              src="./images/icon-cart.svg"
+              alt=""
+              id="cart1"
+              class="cart"
+              onclick="openCart()"
+            />
+            <img
+              src="./images/icon-cart.svg"
+              alt=""
+              id="cart2"
+              onclick="closeCart()"
+            />
+            <img src="./images/image-avatar.png" alt="" class="lady" />
+          </div>
+        </div>
+        <!-- <hr /> -->
+      </nav>
+      <hr />
+      <div class="body">
+        <div class="mobile">
+          <!-- <div class="mobileTop"> -->
+          <div class="top">
+            <div class="mobilepics">
+              <img src="./images/image-product-1.jpg" alt="" class="picture" />
+            </div>
+            <div class="mobilepics">
+              <img src="./images/image-product-2.jpg" alt="" class="picture" />
+            </div>
+            <div class="mobilepics">
+              <img src="./images/image-product-3.jpg" alt="" class="picture" />
+            </div>
+            <div class="mobilepics">
+              <img src="./images/image-product-4.jpg" alt="" class="picture" />
+            </div>
+            <img
+              src="/images/icon-previous.svg"
+              alt=""
+              class="arrow-phone next-mobile"
+              onclick="increaseSlide(1)"
+            />
+            <img
+              src="/images/icon-previous.svg"
+              alt=""
+              class="arrow-phone previous"
+              onclick="increaseSlide(-1)"
+            />
+          </div>
+        </div>
+        <div class="pic">
+          <div class="top" onclick="displayLightbox()">
+            <!-- <div class="pictop pics">
+            <img src="./images/image-product-1.jpg" alt="" class="picture" />
+          </div> -->
+            <div class="pictop pics">
+              <img src="./images/image-product-1.jpg" alt="" class="picture" />
+            </div>
+            <div class="pictop pics">
+              <img src="./images/image-product-2.jpg" alt="" class="picture" />
+            </div>
+            <div class="pictop pics">
+              <img src="./images/image-product-3.jpg" alt="" class="picture" />
+            </div>
+            <div class="pictop pics">
+              <img src="./images/image-product-4.jpg" alt="" class="picture" />
+            </div>
+          </div>
+          <br />
+          <div class="bottom">
+            <div class="small">
+              <img
+                src="/images/image-product-1-thumbnail.jpg"
+                alt=""
+                class="first"
+                onclick="currentImage(1)"
+              />
+              <img
+                src="/images/image-product-2-thumbnail.jpg"
+                alt=""
+                class="first"
+                onclick="currentImage(2)"
+              />
+              <img
+                src="/images/image-product-3-thumbnail.jpg"
+                alt=""
+                class="first"
+                onclick="currentImage(3)"
+              />
+              <img
+                src="/images/image-product-4-thumbnail.jpg"
+                alt=""
+                class="first"
+                onclick="currentImage(4)"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="text">
+          <span class="Sneaker">Sneaker Company</span>
+          <h1 class="fall">Fall Limited Edition <br />Sneakers</h1>
+          <p class="sneaker">
+            These low-profile sneakers are your perfect <br class="device" />
+            casual wear <br class="desktop" />companion. Featuring a durable
+            <br class="device" />
+            rubber outer sole, they’ll <br class="desktop" />withstand
+            <br class="device" />everything the weather can offer.
+          </p>
+          <!-- &dollar; -->
+          <div class="flex">
+            <h2 class="cash">$125.00 <span class="fifty">50%</span></h2>
+            <sub>$250.00</sub>
+          </div>
+          <div class="buttons">
+            <div class="addition">
+              <img
+                src="./images/icon-minus.svg"
+                alt=""
+                class="minus"
+                id="minus"
+                onclick="decrease()"
+              />
+              <span class="zero" id="zero">0</span>
+              <img
+                src="./images/icon-plus.svg"
+                alt=""
+                id="plus"
+                onclick="increase()"
+              />
+            </div>
+            <div class="carts" onclick="addToCart()">
+              <img src="./images/icon-cart.svg" alt="" class="btn" />
+              <span class="add">Add to cart</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/newscript.js"></script>
+  </body>
+</html>
