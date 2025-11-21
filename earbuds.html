@@ -36,6 +36,7 @@
         cursor: pointer;
       }
       .color-selector.active {
+        transform: scale(1.1);
         box-shadow: 0 0 0 3px #6366f1, 0 0 0 5px white; /* Custom active state */
       }
     </style>
@@ -58,7 +59,7 @@
         >
         <nav class="hidden md:flex space-x-8 text-gray-600 font-medium">
           <a
-            href="ecommerce.html"
+            href="#shop"
             class="hover:text-indigo-600 transition-colors"
             >Shop</a
           >
@@ -128,33 +129,33 @@
             <button
               class="thumb-btn flex-shrink-0 rounded-lg overflow-hidden border-2 border-transparent hover:border-indigo-500 transition-colors w-20 h-20 lg:w-full lg:h-20"
               data-image="https://placehold.co/600x600/6366f1/ffffff?text=Main+Image"
-              data-color="Indigo"
+              data-color="DarkBlue"
             >
               <img
-                src="images/indigo.jpeg"
-                alt="Indigo Thumbnail"
+                src="images/dark blue.jpeg"
+                alt="Dark Blue Thumbnail"
                 class="w-full h-full object-cover"
               />
             </button>
             <button
               class="thumb-btn flex-shrink-0 rounded-lg overflow-hidden border-2 border-transparent hover:border-indigo-500 transition-colors w-20 h-20 lg:w-full lg:h-20"
               data-image="https://placehold.co/600x600/1f2937/ffffff?text=Black+Image"
-              data-color="Midnight"
+              data-color="DarkGreen"
             >
               <img
-                src="images/midnight.jpeg"
-                alt="Black Thumbnail"
+                src="images/dark green.jpeg"
+                alt="Dark Green Thumbnail"
                 class="w-full h-full object-cover"
               />
             </button>
             <button
               class="thumb-btn flex-shrink-0 rounded-lg overflow-hidden border-2 border-transparent hover:border-indigo-500 transition-colors w-20 h-20 lg:w-full lg:h-20"
               data-image="https://placehold.co/600x600/fca5a5/ffffff?text=Pink+Image"
-              data-color="Blush"
+              data-color="Black"
             >
               <img
-                src="images/pink rules.jpeg"
-                alt="Pink Thumbnail"
+                src="images/earbud black.jpeg"
+                alt="Black Thumbnail"
                 class="w-full h-full object-cover"
               />
             </button>
@@ -166,8 +167,8 @@
           >
             <img
               id="main-product-image"
-              src="images/indigo.jpeg"
-              alt="Lite Wireless Earbuds in Indigo"
+              src="images/dark blue.jpeg"
+              alt="Lite Wireless Earbuds in Dark Blue"
               class="w-1/2x h-full object-cover"
               onerror="this.onerror=null; this.src='https://placehold.co/800x800/ef4444/ffffff?text=Image+Load+Error';"
             />
@@ -205,31 +206,31 @@
             <p class="text-lg font-semibold text-gray-800 mb-2">
               Color:
               <span id="selected-color-name" class="font-normal text-indigo-600"
-                >Indigo</span
+                >Dark Blue</span
               >
             </p>
             <div class="flex space-x-3">
               <!-- Indigo -->
               <div
                 class="color-selector active w-8 h-8 rounded-full bg-indigo-600 shadow-md"
-                data-image="images/indigo.jpeg"
-                data-color-name="Indigo"
+                data-image="images/dark blue.jpeg"
+                data-color-name="DarkBlue"
                 data-hex="#6366f1"
                 data-price="249.99"
               ></div>
               <!-- Midnight Black -->
               <div
                 class="color-selector w-8 h-8 rounded-full bg-gray-900 shadow-md"
-                data-image="images/midnight.jpeg"
-                data-color-name="Midnight"
-                data-hex="#1f2937"
+                data-image="images/dark green.jpeg"
+                data-color-name="DarkGreen"
+                data-hex="#1a4e1a"
                 data-price="249.99"
               ></div>
               <!-- Blush Pink -->
               <div
                 class="color-selector w-8 h-8 rounded-full bg-red-300 shadow-md"
-                data-image="images/pink rules.jpeg"
-                data-color-name="Blush"
+                data-image="images/earbud black.jpeg"
+                data-color-name="Black"
                 data-hex="#fca5a5"
                 data-price="259.99"
               ></div>
@@ -306,7 +307,7 @@
                 />
               </svg>
               <span class="text-gray-700 font-medium">Free Shipping</span> on
-              all orders over ₦100.
+              all orders over ₦10000.
             </div>
           </div>
         </div>
@@ -447,7 +448,7 @@
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
           <!-- Column 1 -->
           <div>
-            <h4 class="text-lg font-semibold mb-4">Shop</h4>
+            <h4 class="text-lg font-semibold mb-4" id="shop">Shop</h4>
             <ul class="space-y-2 text-sm text-gray-300">
               <li>
                 <a href="index.html" class="hover:text-indigo-400 transition-colors"
@@ -462,6 +463,11 @@
               <li>
                 <a href="#" class="hover:text-indigo-400 transition-colors"
                   >Speakers</a
+                >
+              </li>
+              <li>
+                <a href="ecommerce.html" class="hover:text-indigo-400 transition-colors"
+                  >Sneakers</a
                 >
               </li>
             </ul>
@@ -574,9 +580,9 @@
       }, 3000);
       // Data structure for the different color variants
       const variants = {
-        Indigo: { image: "images/indigo.jpeg", price: 14999.99 },
-        Midnight: { image: "images/midnight.jpeg", price: 15999.99 },
-        Blush: { image: "images/pink rules.jpeg", price: 14999.99 },
+        DarkBlue: { image: "images/dark blue.jpeg", price: 14999.99 },
+        DarkGreen: { image: "images/dark green.jpeg", price: 15999.99 },
+        Black: { image: "images/earbud black.jpeg", price: 14999.99 },
       };
 
       // Function to handle color and thumbnail selection
