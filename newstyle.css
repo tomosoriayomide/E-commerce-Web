@@ -263,6 +263,8 @@ sub {
   /* margin-bottom: 1px solid hsl(26, 100%, 55%); */
   cursor: pointer;
   height: 100%;
+  text-decoration: none;
+  color: gray;
   /* background-color: brown; */
   /* margin-left: 10px; */
 }
@@ -412,6 +414,16 @@ img:hover,
     transform: translateX(-110%);
   }
 }
+#logout-btn{
+  background-color: hsl(26, 100%, 55%);
+  color: white;
+  font-size: small;
+  padding: 10px 12px;
+  border-radius: 5px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
 #cartNo {
   background-color: hsl(26, 100%, 55%);
   padding: 2.5px;
@@ -424,9 +436,23 @@ img:hover,
   position: absolute;
   /* right: 16rem; */
   font-size: 10px;
-  right: 20%;
+  right: 26.2%;
   margin-bottom: 15px;
   z-index: 5;
+}
+#profile-avatar{
+  padding: 20px;
+  width: 18px;
+  height: 18px;
+  border-radius: 100%;
+  background-color: hsl(26, 100%, 55%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
 }
 .thumb {
   width: 45px;

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -11,12 +11,24 @@
       <p>SUCCESS!!!</p>
     </div>
     <div id="menu" class="menu">
-      <img src="/images/icon-close.svg" alt="" class="cancelMenu" onclick="closeMenu()"/>
-      <a href="index.html" id="collect" onclick="collect()" onload="collect()" style="color: gray; text-decoration: none;" >Collections</a>
-      <p id="male" onclick="men()">Men</p>
-      <p id="female" onclick="women()">Women</p>
-      <p id="story" onclick="story()">About</p>
-      <p id="phone" onclick="phone()">Contact</p>
+      <img
+        src="/images/icon-close.svg"
+        alt=""
+        class="cancelMenu"
+        onclick="closeMenu()"
+      />
+      <a
+        href="index.html"
+        id="collect"
+        onclick="collect()"
+        onload="collect()"
+        style="color: gray; text-decoration: none"
+        >Collections</a
+      >
+      <p id="male" onclick="men()">Sneakers</p>
+      <p id="female" onclick="women()">Headphones</p>
+      <p id="story" onclick="story()">Earbuds</p>
+      <p id="phone" onclick="phone()">Speakers</p>
     </div>
     <div class="bgm" id="bgm" onclick="closeMenu()"></div>
     <div id="message">
@@ -130,19 +142,43 @@
     <div class="cont">
       <nav>
         <!-- <div class="diva"> -->
-          <img src="./images/icon-menu.svg" alt="" class="ham" onclick="openMenu()" />
-          <img src="./images/logo.svg" alt="" class="logos" />
+        <img
+          src="./images/icon-menu.svg"
+          alt=""
+          class="ham"
+          onclick="openMenu()"
+        />
+        <img src="./images/logo.svg" alt="" class="logos" />
         <!-- </div> -->
         <div class="pt1">
           <div class="picc">
             <img src="./images/logo.svg" alt="" class="logo" />
           </div>
           <div class="align">
-            <a href="index.html"  class="hover" id="hover" onclick="color()" style="color: gray; text-decoration: none; padding-bottom: 40px;"   >Collections</a>
-            <span style="color: gray; text-decoration: none; border-bottom: 3px solid hsl(26, 100%, 55%); padding-bottom: 40px;" href="index.html" class="hover" id="hovera" onclick="colors()">Men</span>
-            <span class="hover" id="hoverb" onclick="colored()">Women</span>
-            <span class="hover" id="hoverc" onclick="colora()">About</span>
-            <span class="hover" id="hoverd" onclick="colorb()">Contact</span>
+            <a
+              href="index.html"
+              class="hover"
+              id="hover"
+              onclick="color()"
+              style="color: gray; text-decoration: none; padding-bottom: 40px"
+              >Collections</a
+            >
+            <span
+              style="
+                color: gray;
+                text-decoration: none;
+                border-bottom: 3px solid hsl(26, 100%, 55%);
+                padding-bottom: 40px;
+              "
+              href="#"
+              class="hover"
+              id="hovera"
+              onclick="colors()"
+              >Sneakers</span
+            >
+            <a href="/headphones.html" class="hover" id="hoverb" onclick="colored()">Headphones</a>
+            <a href="/earbuds.html" class="hover" id="hoverc" onclick="colora()">Earbuds</a>
+            <a href="#" class="hover" id="hoverd" onclick="colorb()">Speakers</a>
           </div>
         </div>
         <div class="cartall">
@@ -161,7 +197,18 @@
               id="cart2"
               onclick="closeCart()"
             />
-            <img src="./images/image-avatar.png" alt="" class="lady" />
+            <div
+              id="profile-avatar"
+            >
+              ?
+            </div>
+            <button
+              id="logout-btn"
+              class="bg-orange-500 hover:bg-orange-600 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors"
+            >
+              Logout
+            </button>
+            <!-- <img src="./images/image-avatar.png" alt="" class="lady" /> -->
           </div>
         </div>
         <!-- <hr /> -->
@@ -287,5 +334,54 @@
     </div>
 
     <script src="/newscript.js"></script>
+    <script type="module">
+      import { initializeApp } from "https://cdn.jsdelivr.net/npm/firebase@10.8.0/app/+esm";
+      import {
+        getAuth,
+        onAuthStateChanged,
+        signOut,
+      } from "https://cdn.jsdelivr.net/npm/firebase@10.8.0/auth/+esm";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyCgXj6lOFcEyrZkrAqcGj0TUhtJUd6XX-g",
+        authDomain: "lite-ecommerce-63008.firebaseapp.com",
+        projectId: "lite-ecommerce-63008",
+        storageBucket: "lite-ecommerce-63008.firebasestorage.app",
+        messagingSenderId: "322956440279",
+        appId: "1:322956440279:web:55127df028b30dcc92f692",
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+
+      // 🔒 Protect page — redirect if not logged in
+      onAuthStateChanged(auth, (user) => {
+        if (!user) {
+          window.location.href = "login.html";
+        }
+      });
+
+      // 🚪 Logout
+      document
+        .getElementById("logout-btn")
+        .addEventListener("click", async () => {
+          try {
+            await signOut(auth);
+            window.location.href = "login.html";
+          } catch (error) {
+            alert("Error logging out. Try again.");
+          }
+        });
+      onAuthStateChanged(auth, (user) => {
+        if (!user) {
+          window.location.href = "login.html";
+        } else {
+          // Get initials from email
+          const email = user.email;
+          const initials = email.slice(0, 2).toUpperCase(); // takes first 2 letters
+          document.getElementById("profile-avatar").textContent = initials;
+        }
+      });
+    </script>
   </body>
 </html>

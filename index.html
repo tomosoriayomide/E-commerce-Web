@@ -1,708 +1,564 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lite Wireless Headphones - Product Page</title>
+    <title>Lite Market | Modern E-commerce</title>
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-        <!-- Basic SEO -->
-    <meta
-      name="description"
-      content="Lite E-Commerce web page a place where you can buy standard goods at affordable prices"
+    <!-- Load Lucide Icons for aesthetic icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
     />
-    <meta
-      name="keywords"
-      content="E-Commerce, business, buy and sell, faith, prayer, Jesus"
-    />
-
-    <!-- Open Graph (for link previews on social media) -->
-    <meta property="og:title" content="Lite E-Commerce Web Page " />
-    <meta
-      property="og:description" 
-      content="Lite E-Commerce web page a place where you can buy standard goods at affordable prices"
-    />
-    <meta
-      property="og:image"
-      content=""
-    />
-    <meta property="og:url" content="https://eccomercewebpg.vercel.app" />
-    <meta property="og:type" content="website" />
-
-    <!-- Twitter Card (for better display on Twitter/X) -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Lite E-Commerce Web Page" />
-    <!-- <meta
-      name="twitter:description"
-      content="Join Voice of Faith Chapel — a place of worship, growth, and transformation."
-    />
-    <meta
-      name="twitter:image"
-      content="https://voice-of-faith-chapel.vercel.app/images/logo.png"
-    /> -->
-
     <style>
-      /* Custom scrollbar styling for better aesthetics */
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-      html{
-        scroll-behavior: smooth;
-      }
-      ::-webkit-scrollbar-thumb {
-        background-color: #6366f1; /* Indigo-500 */
-        border-radius: 4px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #f1f1f1;
-      }
-
-      /* Font configuration */
-      :root {
-        --font-inter: "Inter", sans-serif;
-      }
       body {
-        font-family: var(--font-inter);
+        font-family: "Inter", sans-serif;
+        background-color: #f7f7f7;
       }
-
-      /* Utility class for image borders */
-      .color-selector {
-        transition: all 0.2s;
-        cursor: pointer;
+      /* Custom gradient for CTA button */
+      .btn-gradient {
+        background-image: linear-gradient(to right, #4f46e5, #6366f1, #818cf8);
+        transition: all 0.3s ease;
       }
-      .color-selector.active {
-        box-shadow: 0 0 0 3px #6366f1, 0 0 0 5px white; /* Custom active state */
+      .btn-gradient:hover {
+        box-shadow: 0 4px 15px rgba(99, 102, 241, 0.5);
+        transform: translateY(-1px);
       }
     </style>
   </head>
-  <body class="bg-gray-50 antialiased">
-    <span id="message"
-      class="bg-indigo-600 p-3 w-lg rounded-full hover:bg-indigo-700 transition-colors text-white font-medium mt-20 ml-10"
-      style="position: fixed; z-index: 30; display: none;"
-    >
-      <span id="added">0</span> </span>
+  <body class="text-gray-800">
     <!-- Header & Navigation -->
-    <header class="bg-white shadow-md sticky top-0 z-10">
+    <header class="bg-white shadow-lg sticky top-0 z-50">
       <div
         class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center"
       >
+        <!-- Logo -->
         <a
           href="#"
-          class="text-3xl font-extrabold text-gray-800 hover:text-indigo-600 transition-colors"
-          >Lite</a
-        >
-        <nav class="hidden md:flex space-x-8 text-gray-600 font-medium">
+          class="text-3xl font-extrabold text-indigo-600 tracking-tight"
+          >Lite
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex space-x-8 font-medium">
           <a
-            href="#shop"
-            class="hover:text-indigo-600 transition-colors"
-            >Shop</a
+            href="#"
+            class="text-gray-600 hover:text-indigo-600 transition duration-150"
+            >Shop All</a
           >
-          <a href="#" class="hover:text-indigo-600 transition-colors"
+          <a
+            href="#"
+            class="text-gray-600 hover:text-indigo-600 transition duration-150"
             >New Arrivals</a
           >
-          <a href="#" class="hover:text-indigo-600 transition-colors">About</a>
+          <a
+            href="#"
+            class="text-gray-600 hover:text-indigo-600 transition duration-150"
+            >About Us</a
+          >
+          <a
+            href="#"
+            class="text-gray-600 hover:text-indigo-600 transition duration-150"
+            >Contact</a
+          >
         </nav>
+
+        <!-- Icons/Utilities -->
         <div class="flex items-center space-x-4">
           <button
-            class="text-gray-600 hover:text-indigo-600 transition-colors"
-            aria-label="Search"
+            class="text-gray-600 hover:text-indigo-600 transition duration-150 p-2 rounded-full hover:bg-indigo-50"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-              />
-            </svg>
+            <i data-lucide="search" class="w-5 h-5"></i>
           </button>
+          <!-- <button class="text-gray-600 hover:text-indigo-600 transition duration-150 p-2 rounded-full hover:bg-indigo-50 relative">
+                    <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+                    <span class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-red-500 rounded-full">3</span>
+                </button> -->
           <button
-            class="text-gray-600 hover:text-indigo-600 transition-colors relative"
-            aria-label="Shopping Cart"
+            class="md:hidden text-gray-600 hover:text-indigo-600 transition duration-150 p-2 rounded-full hover:bg-indigo-50"
+            onclick="toggleMenu()"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5H4M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-              />
-            </svg>
-            <span
-              class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full"
-              id="order"
-              >0</span
-            >
+            <i data-lucide="menu" class="w-6 h-6"></i>
           </button>
         </div>
+      </div>
+
+      <!-- Mobile Menu (Hidden by default) -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden bg-white border-t border-gray-100"
+      >
+        <nav class="flex flex-col space-y-2 p-4 font-medium">
+          <a
+            href="#"
+            class="text-gray-700 hover:bg-indigo-50 px-3 py-2 rounded-md transition duration-150"
+            >Shop All</a
+          >
+          <a
+            href="#"
+            class="text-gray-700 hover:bg-indigo-50 px-3 py-2 rounded-md transition duration-150"
+            >New Arrivals</a
+          >
+          <a
+            href="#"
+            class="text-gray-700 hover:bg-indigo-50 px-3 py-2 rounded-md transition duration-150"
+            >About Us</a
+          >
+          <a
+            href="#"
+            class="text-gray-700 hover:bg-indigo-50 px-3 py-2 rounded-md transition duration-150"
+            >Contact</a
+          >
+        </nav>
       </div>
     </header>
 
-    <!-- Main Content: Product Detail Section -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div class="lg:grid lg:grid-cols-2 lg:gap-12 xl:gap-16">
-        <!-- Product Images -->
-        <div class="flex flex-col-reverse lg:flex-row gap-4">
-          <!-- Small Thumbnail Gallery -->
+    <main>
+      <!-- Hero Section -->
+      <section class="bg-gray-50 pt-16 pb-20 sm:pt-24 sm:pb-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="lg:grid lg:grid-cols-12 lg:gap-12 items-center">
+            <!-- Text Content -->
+            <div class="lg:col-span-6 xl:col-span-5 mb-10 lg:mb-0">
+              <span
+                class="text-sm font-semibold text-indigo-600 uppercase tracking-widest mb-4 block"
+                >Future-Proof Your Life</span
+              >
+              <h1
+                class="text-5xl md:text-6xl font-extrabold text-gray-900 leading-tight mb-6"
+              >
+                The Next <span class="text-indigo-600">Generation</span> of Tech
+                & Gear
+              </h1>
+              <p class="text-xl text-gray-600 mb-8">
+                Discover curated, high-quality products designed to elevate your
+                daily routine and keep you ahead of the curve. Innovation
+                delivered to your door.
+              </p>
+              <div
+                class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4"
+              >
+                <a
+                  href="/login.html"
+                  class="btn-gradient text-white font-bold py-3 px-8 rounded-xl text-lg shadow-xl shadow-indigo-500/50 hover:shadow-indigo-500/70 text-center"
+                >
+                  Start Shopping Now
+                </a>
+                <a
+                  href="#more"
+                  class="text-gray-700 bg-white border border-gray-300 font-medium py-3 px-8 rounded-xl text-lg hover:bg-gray-100 transition duration-150 text-center"
+                >
+                  Explore Categories
+                </a>
+              </div>
+            </div>
+
+            <!-- Image/Visual Showcase -->
+            <div class="lg:col-span-6 xl:col-span-7">
+              <div class="relative rounded-3xl overflow-hidden shadow-2xl">
+                <!-- Placeholder Image with a modern, clean aesthetic -->
+                <img
+                  src="images/midnight.jpeg"
+                  alt="Modern tech gadgets and accessories neatly arranged"
+                  class="w-full h-full object-cover"
+                />
+                <div class="absolute inset-0 bg-black opacity-10"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured Categories/Products -->
+      <section class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-12">
+            <h2 class="text-4xl font-extrabold text-gray-900 mb-3">
+              Featured Essentials
+            </h2>
+            <p class="text-lg text-gray-500">
+              Hand-picked collections of our best-selling items this season.
+            </p>
+          </div>
+
           <div
-            class="flex lg:flex-col space-x-3 lg:space-x-0 lg:space-y-3 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0 lg:w-24"
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
+            id="more"
           >
-            <!-- Note: Images are placeholders. In a real app, these would load actual images. -->
-            <button
-              class="thumb-btn flex-shrink-0 rounded-lg overflow-hidden border-2 border-transparent hover:border-indigo-500 transition-colors w-20 h-20 lg:w-full lg:h-20"
-              data-image="https://placehold.co/600x600/6366f1/ffffff?text=Main+Image"
-              data-color="Indigo"
+            <!-- Product Card 1 -->
+            <div
+              class="bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 overflow-hidden group"
             >
-              <img
-                src="images/indigo.jpeg"
-                alt="Indigo Thumbnail"
-                class="w-full h-full object-cover"
-              />
-            </button>
-            <button
-              class="thumb-btn flex-shrink-0 rounded-lg overflow-hidden border-2 border-transparent hover:border-indigo-500 transition-colors w-20 h-20 lg:w-full lg:h-20"
-              data-image="https://placehold.co/600x600/1f2937/ffffff?text=Black+Image"
-              data-color="Midnight"
-            >
-              <img
-                src="images/midnight.jpeg"
-                alt="Black Thumbnail"
-                class="w-full h-full object-cover"
-              />
-            </button>
-            <button
-              class="thumb-btn flex-shrink-0 rounded-lg overflow-hidden border-2 border-transparent hover:border-indigo-500 transition-colors w-20 h-20 lg:w-full lg:h-20"
-              data-image="https://placehold.co/600x600/fca5a5/ffffff?text=Pink+Image"
-              data-color="Blush"
-            >
-              <img
-                src="images/pink rules.jpeg"
-                alt="Pink Thumbnail"
-                class="w-full h-full object-cover"
-              />
-            </button>
-          </div>
-
-          <!-- Main Display Image -->
-          <div
-            class="flex-1 rounded-xl shadow-2xl overflow-hidden mb-6 lg:mb-0"
-          >
-            <img
-              id="main-product-image"
-              src="images/indigo.jpeg"
-              alt="Lite Wireless Headphones in Indigo"
-              class="w-1/2x h-full object-cover"
-              onerror="this.onerror=null; this.src='https://placehold.co/800x800/ef4444/ffffff?text=Image+Load+Error';"
-            />
-          </div>
-        </div>
-
-        <!-- Product Details & Actions -->
-        <div class="lg:sticky lg:top-20 h-fit">
-          <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-2">
-            Lite Wireless Headphones
-          </h1>
-          <p class="text-xl text-indigo-600 font-semibold mb-4">
-            <span id="product-price">₦24,999.99</span>
-            <span class="text-gray-400 text-sm line-through ml-2"
-              >₦30,000.00</span
-            >
-          </p>
-
-          <!-- Rating -->
-          <div class="flex items-center space-x-2 mb-6 text-yellow-500">
-            <!-- 5 Star Rating SVG/Emoji -->
-            <span class="text-xl">★★★★★</span>
-            <span class="text-gray-500 text-sm">(4,210 Reviews)</span>
-          </div>
-
-          <!-- Short Description -->
-          <p class="text-gray-600 leading-relaxed mb-6">
-            Experience pure sound with the Lite Wireless Headphones. Featuring
-            industry-leading noise cancellation, 30 hours of battery life, and
-            ultra-plush earcups. Perfect for travel, work, or relaxation.
-          </p>
-
-          <!-- Color Options -->
-          <div class="mb-6">
-            <p class="text-lg font-semibold text-gray-800 mb-2">
-              Color:
-              <span id="selected-color-name" class="font-normal text-indigo-600"
-                >Indigo</span
-              >
-            </p>
-            <div class="flex space-x-3">
-              <!-- Indigo -->
-              <div
-                class="color-selector active w-8 h-8 rounded-full bg-indigo-600 shadow-md"
-                data-image="images/indigo.jpeg"
-                data-color-name="Indigo"
-                data-hex="#6366f1"
-                data-price="249.99"
-              ></div>
-              <!-- Midnight Black -->
-              <div
-                class="color-selector w-8 h-8 rounded-full bg-gray-900 shadow-md"
-                data-image="images/midnight.jpeg"
-                data-color-name="Midnight"
-                data-hex="#1f2937"
-                data-price="249.99"
-              ></div>
-              <!-- Blush Pink -->
-              <div
-                class="color-selector w-8 h-8 rounded-full bg-red-300 shadow-md"
-                data-image="images/pink rules.jpeg"
-                data-color-name="Blush"
-                data-hex="#fca5a5"
-                data-price="259.99"
-              ></div>
-            </div>
-          </div>
-
-          <!-- Quantity & Purchase Buttons -->
-          <div class="flex space-x-4 mb-8">
-            <input
-              type="number"
-              min="1"
-              value="1"
-              id="number"
-              placeholder="1"
-              class="w-20 rounded-xl border border-gray-300 text-center p-3 text-lg focus:border-indigo-500 focus:ring-indigo-500 shadow-sm"
-              aria-label="Quantity"
-            />
-
-            <button
-              onclick="orders()"
-              class="flex-1 flex items-center justify-center p-4 bg-indigo-600 text-white font-bold rounded-xl shadow-lg hover:bg-indigo-700 transition-all duration-200 uppercase tracking-wider text-lg transform hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-indigo-500 focus:ring-opacity-50"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6 mr-2"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+              <div class="aspect-square bg-indigo-100 overflow-hidden">
+                <img
+                  src="images/dark green.jpeg"
+                  alt="Speaker"
+                  class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                 />
-              </svg>
-              Add to Cart
-            </button>
-          </div>
+              </div>
+              <div class="p-4 text-center">
+                <h3
+                  class="text-xl font-semibold text-gray-900 group-hover:text-indigo-600 transition duration-300"
+                >
+                  Wearables
+                </h3>
+                <p class="text-gray-500 mb-2">Comfort and Quality</p>
+                <span class="text-2xl font-bold text-indigo-700">₦15000</span>
+              </div>
+            </div>
 
-          <!-- Shipping & Availability -->
-          <div class="border-t border-b border-gray-200 py-4 space-y-3">
-            <div class="flex items-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6 text-green-500 mr-3"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 4.016A11.955 11.955 0 0012 21.012a11.955 11.955 0 008.618-4.016z"
+            <!-- Product Card 2 -->
+            <div
+              class="bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 overflow-hidden group"
+            >
+              <div class="aspect-square bg-teal-100 overflow-hidden">
+                <img
+                  src="/images/image-product-1.jpg"
+                  alt="Sneakers"
+                  style="width: 30rem"
+                  class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                 />
-              </svg>
-              <span class="text-gray-700 font-medium">In Stock</span> - Ready to
-              ship within 24 hours.
+              </div>
+              <div class="p-4 text-center">
+                <h3
+                  class="text-xl font-semibold text-gray-900 group-hover:text-indigo-600 transition duration-300"
+                >
+                  Wearables
+                </h3>
+                <p class="text-gray-500 mb-2">Comfort and productivity</p>
+                <span class="text-2xl font-bold text-indigo-700">$125</span>
+              </div>
             </div>
-            <div class="flex items-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6 text-gray-500 mr-3"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+
+            <!-- Product Card 3 -->
+            <div
+              class="bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 overflow-hidden group"
+            >
+              <div class="aspect-square bg-pink-100 overflow-hidden">
+                <img
+                  src="images/indigo.jpeg"
+                  alt="Wireless Headphones"
+                  class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                 />
-              </svg>
-              <span class="text-gray-700 font-medium">Free Shipping</span> on
-              all orders over ₦10000.
+              </div>
+              <div class="p-4 text-center">
+                <h3
+                  class="text-xl font-semibold text-gray-900 group-hover:text-indigo-600 transition duration-300"
+                >
+                  Audio
+                </h3>
+                <p class="text-gray-500 mb-2">Immersive sound quality</p>
+                <span class="text-2xl font-bold text-indigo-700">₦25,000</span>
+              </div>
+            </div>
+
+            <!-- Product Card 4 -->
+            <div
+              class="bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 overflow-hidden group"
+            >
+              <div class="aspect-square bg-yellow-100 overflow-hidden">
+                <img
+                  src="images/speaker.jpg"
+                  alt="Speakers"
+                  class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                />
+              </div>
+              <div class="p-4 text-center">
+                <h3
+                  class="text-xl font-semibold text-gray-900 group-hover:text-indigo-600 transition duration-300"
+                >
+                  Speakers
+                </h3>
+                <p class="text-gray-500 mb-2">Durable and organized</p>
+                <span class="text-2xl font-bold text-indigo-700">₦50000</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <!-- Detailed Product Information Tabs -->
-      <div class="mt-16 border-t border-gray-200 pt-12">
-        <div class="flex border-b border-gray-200 space-x-8">
-          <button
-            onclick="showTab('description')"
-            id="tab-description"
-            class="tab-button text-lg font-medium py-3 border-b-2 border-indigo-600 text-indigo-600 transition-colors"
-          >
-            Description
-          </button>
-          <button
-            onclick="showTab('specs')"
-            id="tab-specs"
-            class="tab-button text-lg font-medium py-3 border-b-2 border-transparent text-gray-500 hover:text-indigo-600 hover:border-indigo-300 transition-colors"
-          >
-            Specifications
-          </button>
-          <button
-            onclick="showTab('reviews')"
-            id="tab-reviews"
-            class="tab-button text-lg font-medium py-3 border-b-2 border-transparent text-gray-500 hover:text-indigo-600 hover:border-indigo-300 transition-colors"
-          >
-            Reviews (4.9)
-          </button>
-        </div>
-
-        <!-- Tab Content -->
-        <div
-          id="content-description"
-          class="tab-content py-6 text-gray-600 leading-loose"
-        >
-          <h3 class="text-2xl font-bold text-gray-900 mb-4">
-            Unmatched Clarity and Comfort
-          </h3>
-          <p class="mb-4">
-            The Lite headphones redefine the listening experience. Our
-            proprietary audio drivers deliver rich, deep bass and crystal-clear
-            highs, putting you right in the studio. The ergonomic design
-            features memory foam cushions that conform perfectly to your ears,
-            ensuring comfort during marathon listening sessions.
-          </p>
-          <ul class="list-disc list-inside space-y-2 ml-4">
-            <li>
-              Acoustic Transparency Mode: Seamlessly blend music with your
-              environment.
-            </li>
-            <li>
-              Fast Charge Technology: 10 minutes of charge gives you 5 hours of
-              playback.
-            </li>
-            <li>Durable, lightweight aluminum construction.</li>
-          </ul>
-        </div>
-
-        <div
-          id="content-specs"
-          class="tab-content hidden py-6 text-gray-600 leading-loose"
-        >
-          <h3 class="text-2xl font-bold text-gray-900 mb-4">
-            Technical Details
-          </h3>
-          <dl class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
-            <div class="py-2 border-b border-gray-100">
-              <dt class="font-medium text-gray-800">Connection:</dt>
-              <dd class="ml-0 md:ml-4">Bluetooth 5.3 (aptX support)</dd>
-            </div>
-            <div class="py-2 border-b border-gray-100">
-              <dt class="font-medium text-gray-800">Battery Life:</dt>
-              <dd class="ml-0 md:ml-4">Up to 30 hours (ANC Off)</dd>
-            </div>
-            <div class="py-2 border-b border-gray-100">
-              <dt class="font-medium text-gray-800">Noise Cancellation:</dt>
-              <dd class="ml-0 md:ml-4">Hybrid Active Noise Cancellation</dd>
-            </div>
-            <div class="py-2 border-b border-gray-100">
-              <dt class="font-medium text-gray-800">Weight:</dt>
-              <dd class="ml-0 md:ml-4">285 grams</dd>
-            </div>
-            <div class="py-2 border-b border-gray-100">
-              <dt class="font-medium text-gray-800">Charging Port:</dt>
-              <dd class="ml-0 md:ml-4">USB-C</dd>
-            </div>
-          </dl>
-        </div>
-
-        <div
-          id="content-reviews"
-          class="tab-content hidden py-6 text-gray-600 leading-loose"
-        >
-          <h3 class="text-2xl font-bold text-gray-900 mb-6">
-            Customer Feedback
-          </h3>
-
-          <!-- Review 1 -->
-          <div class="border-b pb-4 mb-4">
-            <div class="flex items-center mb-2">
-              <span class="text-lg text-yellow-500 mr-2">★★★★★</span>
-              <span class="font-semibold text-gray-800">A game changer!</span>
-            </div>
-            <p class="text-sm text-gray-500 mb-2">
-              Posted by Alex K. on November 15, 2025
-            </p>
-            <p>
-              The ANC is phenomenal. I use these every day on my commute, and
-              the quality is far better than my previous pair. Worth every
-              penny!
+      <!-- Value Proposition Section (USPs) -->
+      <section class="bg-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-12">
+            <h2 class="text-4xl font-extrabold text-gray-900">
+              Why Choose Lite Market?
+            </h2>
+            <p class="text-lg text-gray-500">
+              More than just a store—it's a commitment to quality and service.
             </p>
           </div>
-
-          <!-- Review 2 -->
-          <div class="border-b pb-4 mb-4">
-            <div class="flex items-center mb-2">
-              <span class="text-lg text-yellow-500 mr-2">★★★★☆</span>
-              <span class="font-semibold text-gray-800"
-                >Great sound, long battery.</span
-              >
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
+            <!-- USP 1: Quality -->
+            <div
+              class="p-6 rounded-xl border border-gray-100 hover:shadow-lg transition duration-300"
+            >
+              <i
+                data-lucide="award"
+                class="w-12 h-12 text-indigo-600 mx-auto mb-4 stroke-1.5"
+              ></i>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                Uncompromising Quality
+              </h3>
+              <p class="text-gray-600">
+                Every product is rigorously tested and hand-selected to ensure
+                superior performance and durability.
+              </p>
             </div>
-            <p class="text-sm text-gray-500 mb-2">
-              Posted by Sarah M. on October 28, 2025
-            </p>
-            <p>
-              My only minor complaint is that the Blush color is a bit lighter
-              than expected, but the audio quality more than makes up for it.
-            </p>
+
+            <!-- USP 2: Shipping -->
+            <div
+              class="p-6 rounded-xl border border-gray-100 hover:shadow-lg transition duration-300"
+            >
+              <i
+                data-lucide="rocket"
+                class="w-12 h-12 text-indigo-600 mx-auto mb-4 stroke-1.5"
+              ></i>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                Lightning Fast Delivery
+              </h3>
+              <p class="text-gray-600">
+                We partner with the best carriers to get your order to you
+                quickly and reliably, often within 1-2 days.
+              </p>
+            </div>
+
+            <!-- USP 3: Support -->
+            <div
+              class="p-6 rounded-xl border border-gray-100 hover:shadow-lg transition duration-300"
+            >
+              <i
+                data-lucide="life-buoy"
+                class="w-12 h-12 text-indigo-600 mx-auto mb-4 stroke-1.5"
+              ></i>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                24/7 Premium Support
+              </h3>
+              <p class="text-gray-600">
+                Our dedicated team is always ready to assist with any questions
+                or issues you may have, day or night.
+              </p>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white mt-12">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-          <!-- Column 1 -->
+    <footer class="bg-gray-900 text-white mt-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+          <!-- Column 1: Logo & Info -->
           <div>
-            <h4 class="text-lg font-semibold mb-4" id="shop">Shop</h4>
-            <ul class="space-y-2 text-sm text-gray-300">
+            <h4 class="text-2xl font-bold text-indigo-400 mb-4">Lite Market</h4>
+            <p class="text-gray-400 text-sm">
+              Curating the best of modern technology and essential gear for the
+              future.
+            </p>
+          </div>
+
+          <!-- Column 2: Quick Links -->
+          <div>
+            <h5 class="text-lg font-semibold mb-4">Shop</h5>
+            <ul class="space-y-2 text-sm">
               <li>
-                <a href="#" class="hover:text-indigo-400 transition-colors"
-                  >Headphones</a
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-indigo-400 transition"
+                  >All Products</a
                 >
               </li>
               <li>
-                <a href="earbuds.html" class="hover:text-indigo-400 transition-colors"
-                  >Earbuds</a
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-indigo-400 transition"
+                  >New Arrivals</a
                 >
               </li>
               <li>
-                <a href="#" class="hover:text-indigo-400 transition-colors"
-                  >Speakers</a
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-indigo-400 transition"
+                  >Sale Items</a
                 >
               </li>
               <li>
-                <a href="ecommerce.html" class="hover:text-indigo-400 transition-colors"
-                  >Sneaker</a
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-indigo-400 transition"
+                  >Gift Cards</a
                 >
               </li>
             </ul>
           </div>
-          <!-- Column 2 -->
+
+          <!-- Column 3: Company -->
           <div>
-            <h4 class="text-lg font-semibold mb-4">Company</h4>
-            <ul class="space-y-2 text-sm text-gray-300">
+            <h5 class="text-lg font-semibold mb-4">Company</h5>
+            <ul class="space-y-2 text-sm">
               <li>
-                <a href="#" class="hover:text-indigo-400 transition-colors"
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-indigo-400 transition"
                   >About Us</a
                 >
               </li>
               <li>
-                <a href="#" class="hover:text-indigo-400 transition-colors"
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-indigo-400 transition"
                   >Careers</a
                 >
               </li>
               <li>
-                <a href="#" class="hover:text-indigo-400 transition-colors"
-                  >Contact</a
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-indigo-400 transition"
+                  >Privacy Policy</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-indigo-400 transition"
+                  >Terms of Service</a
                 >
               </li>
             </ul>
           </div>
-          <!-- Column 3 -->
-          <div>
-            <h4 class="text-lg font-semibold mb-4">Support</h4>
-            <ul class="space-y-2 text-sm text-gray-300">
-              <li>
-                <a href="#" class="hover:text-indigo-400 transition-colors"
-                  >FAQ</a
-                >
-              </li>
-              <li>
-                <a href="#" class="hover:text-indigo-400 transition-colors"
-                  >Shipping & Returns</a
-                >
-              </li>
-              <li>
-                <a href="#" class="hover:text-indigo-400 transition-colors"
-                  >Warranty</a
-                >
-              </li>
-            </ul>
-          </div>
+
           <!-- Column 4: Newsletter -->
-          <div class="col-span-2 md:col-span-1">
-            <h4 class="text-lg font-semibold mb-4">Stay Connected</h4>
-            <p class="text-sm text-gray-300 mb-4">
-              Subscribe for exclusive offers and updates.
+          <div>
+            <h5 class="text-lg font-semibold mb-4">Stay Connected</h5>
+            <p class="text-sm text-gray-400 mb-3">
+              Get 10% off your first order when you sign up for updates.
             </p>
-            <form class="flex">
+            <form  class="flex" id="mail">
+              <input
+                type="hidden"
+                name="access_key"
+                value="9f0ab8ac-e365-4a83-9071-8f5fa7309ee8"
+                id=""
+              />
               <input
                 type="email"
-                placeholder="Enter your email"
-                name="email"
-                id="mail"
+                placeholder="Your email"
                 required
-                class="p-3 rounded-l-lg border-none focus:ring-0 text-gray-900 flex-1"
+                class="p-3 w-full rounded-l-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
               <button
-                class="bg-indigo-600 p-3 rounded-r-lg hover:bg-indigo-700 transition-colors text-white font-medium"
-                id="join"
-                onclick=""
+                type="submit"
+                class="bg-indigo-600 hover:bg-indigo-700 text-white p-3 rounded-r-lg font-medium transition duration-150"
               >
-                Join
+                Sign Up
               </button>
             </form>
           </div>
         </div>
 
         <div
-          class="mt-8 border-t border-gray-700 pt-6 text-center text-sm text-gray-500"
+          class="border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center"
         >
-          &copy; 2025 Young Lite Tech. All rights reserved.
+          <p class="text-sm text-gray-500">
+            &copy; <span id="current-year"></span> Lite Market. All rights
+            reserved.
+          </p>
+          <div class="flex space-x-4 mt-4 md:mt-0">
+            <a href="#" class="text-gray-400 hover:text-indigo-400 transition"
+              ><i data-lucide="twitter" class="w-5 h-5"></i
+            ></a>
+            <a href="#" class="text-gray-400 hover:text-indigo-400 transition"
+              ><i data-lucide="instagram" class="w-5 h-5"></i
+            ></a>
+            <a href="#" class="text-gray-400 hover:text-indigo-400 transition"
+              ><i data-lucide="facebook" class="w-5 h-5"></i
+            ></a>
+          </div>
         </div>
       </div>
     </footer>
-    <!-- JavaScript for Product Interactivity -->
+
     <script>
-      // order
-      let input = document.getElementById("number");
-      let output = document.getElementById("order");
-      let message=document.getElementById("message")
-      let added = document.getElementById("added")
+      // Initialize Lucide Icons
+      lucide.createIcons();
 
-      function orders() {
-        output.innerHTML = input.value;
-        added.innerHTML=input.value
-        display()
-      }
-      function display(){
-        message.style.display=""
-        setTimeout(()=>{
-            message.style.display="none"
-        },2000)
-        if(input.value <="1"){
-            message.innerHTML= input.value + " item added to cart"
-        }
-        if(input.value > "1"){
-            message.innerHTML= input.value + " items added to cart"
-        }
-    }
-      // email submission and validation
-      let btn = document.getElementById("join");
-      btn.innerHTML = "joined";
-      setTimeout(() => {
-        btn.innerHTML = "join";
-      }, 3000);
-      // Data structure for the different color variants
-      const variants = {
-        Indigo: { image: "images/indigo.jpeg", price: 24999.99 },
-        Midnight: { image: "images/midnight.jpeg", price: 25999.99 },
-        Blush: { image: "images/pink rules.jpeg", price: 24999.99 },
-      };
+      // Get current year for footer
+      document.getElementById("current-year").textContent =
+        new Date().getFullYear();
 
-      // Function to handle color and thumbnail selection
-      function updateProduct(colorName) {
-        const variant = variants[colorName];
-        if (!variant) return;
-
-        // 1. Update Main Image
-        document.getElementById("main-product-image").src = variant.image;
-        document.getElementById(
-          "main-product-image"
-        ).alt = `Lite Wireless Headphones in ${colorName}`;
-
-        // 2. Update Color Name and Price
-        document.getElementById("selected-color-name").textContent = colorName;
-        document.getElementById(
-          "product-price"
-        ).textContent = `$${variant.price.toFixed(2)}`;
-
-        // 3. Update Active State of Color Selectors
-        document.querySelectorAll(".color-selector").forEach((el) => {
-          el.classList.remove("active");
-          if (el.getAttribute("data-color-name") === colorName) {
-            el.classList.add("active");
-          }
-        });
-
-        // 4. Update Active State of Thumbnail Buttons
-        document.querySelectorAll(".thumb-btn").forEach((el) => {
-          el.classList.remove("border-indigo-500");
-          if (el.getAttribute("data-color") === colorName) {
-            el.classList.add("border-indigo-500");
-          }
-        });
+      // Function to handle mobile menu toggle
+      function toggleMenu() {
+        const menu = document.getElementById("mobile-menu");
+        menu.classList.toggle("hidden");
       }
 
-      // Function to handle the navigation tabs (Description, Specs, Reviews)
-      function showTab(tabId) {
-        // Hide all content tabs
-        document.querySelectorAll(".tab-content").forEach((content) => {
-          content.classList.add("hidden");
-        });
-        // Reset all tab buttons
-        document.querySelectorAll(".tab-button").forEach((button) => {
-          button.classList.remove("border-indigo-600", "text-indigo-600");
-          button.classList.add(
-            "border-transparent",
-            "text-gray-500",
-            "hover:border-indigo-300"
-          );
-        });
+      // email waitlist
+      const form = document.getElementById("mail");
+      const submitBtn = form.querySelector("button[type='submit']");
 
-        // Show the selected content tab
-        document.getElementById(`content-${tabId}`).classList.remove("hidden");
+      form.addEventListener("submit", async function (e) {
+        e.preventDefault(); // 👈 stop the page redirect
 
-        // Set the active style for the selected button
-        const activeTabButton = document.getElementById(`tab-${tabId}`);
-        activeTabButton.classList.add("border-indigo-600", "text-indigo-600");
-        activeTabButton.classList.remove(
-          "border-transparent",
-          "text-gray-500",
-          "hover:border-indigo-300"
-        );
-      }
+        // Show loading state
+        submitBtn.textContent = "Joining...";
+        submitBtn.disabled = true;
 
-      // Attach event listeners when the page loads
-      document.addEventListener("DOMContentLoaded", () => {
-        // Setup listeners for color selection
-        document.querySelectorAll(".color-selector").forEach((el) => {
-          el.addEventListener("click", () => {
-            updateProduct(el.getAttribute("data-color-name"));
+        const formData = new FormData(form);
+
+        try {
+          const response = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            body: formData,
           });
-        });
 
-        // Setup listeners for thumbnail selection
-        document.querySelectorAll(".thumb-btn").forEach((el) => {
-          el.addEventListener("click", () => {
-            updateProduct(el.getAttribute("data-color"));
-          });
-        });
+          const data = await response.json();
 
-        // Set initial active thumbnail border
-        document
-          .querySelector('.thumb-btn[data-color="Indigo"]')
-          .classList.add("border-indigo-500");
+          if (data.success) {
+            submitBtn.textContent = "✓ Joined!";
+            submitBtn.classList.add("bg-green-600");
+            submitBtn.classList.remove("bg-primary");
+            form.reset(); // 👈 clears the form
+            // Reset button after 3 seconds
+            setTimeout(() => {
+              submitBtn.textContent = "Join";
+              submitBtn.disabled = false;
+              submitBtn.classList.remove("bg-green-600");
+              submitBtn.classList.add("bg-primary");
+            }, 3000);
+          } else {
+            submitBtn.textContent = "Failed. Try Again";
+            submitBtn.disabled = false;
+          }
+        } catch (error) {
+          submitBtn.textContent = "Something went wrong";
+          submitBtn.disabled = false;
+        }
       });
+
+      // Newsletter subscription handler
+      // function subscribe(event) {
+      //     event.preventDefault();
+      //     const form = event.target;
+      //     const emailInput = form.querySelector('input[type="email"]');
+
+      //     // In a real application, you would send this to a server/database.
+      //     console.log("Subscribed with email:", emailInput.value);
+
+      //     // Simple success message (replacing alert())
+      //     const messageBox = document.createElement('div');
+      //     messageBox.className = 'fixed bottom-5 right-5 bg-green-600 text-white p-4 rounded-lg shadow-xl transition-opacity duration-300';
+      //     messageBox.textContent = `Thanks for subscribing, ${emailInput.value}!`;
+      //     document.body.appendChild(messageBox);
+
+      //     // Clear input and hide message after a few seconds
+      //     emailInput.value = '';
+      //     setTimeout(() => {
+      //         messageBox.classList.add('opacity-0');
+      //         messageBox.addEventListener('transitionend', () => messageBox.remove());
+      //     }, 3000);
+      // }
     </script>
   </body>
 </html>

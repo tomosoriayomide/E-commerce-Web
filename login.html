@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <style>
+      body {
+        background-color: #6467f296;
+      }
+      .main {
+        width: 60%;
+        padding: 20px;
+        border-radius: 20px;
+        margin: auto;
+        margin-top: 10%;
+        height: auto;
+        font-family: "Segoe UI", sans-serif;
+        background: linear-gradient(100deg, #6366f1 50%, white 50%);
+        box-shadow: 1px 1px 15px 5px #6366f1;
+        display: flex;
+        gap: 20px;
+        animation: bounce 1s ease-in-out infinite alternate;
+      }
+      @keyframes bounce {
+        /* from { transform: scale(1); margin-top: 10%; } */
+        /* to { transform: scale(1.05); margin-top: 11%; } */
+      }
+      .main:hover {
+        animation: none;
+      }
+      .cont {
+        width: 70%;
+      }
+      .first {
+        color: white;
+      }
+      input[type="submit"]:hover {
+        transform: scale(1.1);
+        cursor: pointer;
+        box-shadow: 1px 1px 15px black;
+      }
+      input[type="submit"] {
+        background-color: #6366f1;
+        color: white;
+        border: none;
+        width: 80%;
+        margin: auto;
+        margin-top: 20px;
+        margin-left: 10%;
+        font-size: 20px;
+        padding: 10px;
+        border-radius: 20px;
+        cursor: pointer;
+      }
+      .hide {
+        display: none;
+      }
+      div input {
+        opacity: 0.5;
+        padding: 10px;
+        border-radius: 20px;
+        width: 90%;
+      }
+      .error-msg {
+        color: red;
+        font-size: 13px;
+        margin-top: 8px;
+        margin-left: 10%;
+      }
+      .success-msg {
+        color: green;
+        font-size: 13px;
+        margin-top: 8px;
+        margin-left: 10%;
+      }
+      @media screen and (max-width: 800px) {
+        .main {
+          flex-direction: column;
+          background: linear-gradient(130deg, #6366f1 50%, white 50%);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="login-page">
+      <!-- LOGIN FORM -->
+      <div class="main" id="login-form">
+        <div class="first">
+          <h1>Welcome to Lite <br />E-commerce Web Page</h1>
+          <p>
+            Lite E-Commerce web page a place where you can buy standard goods at
+            affordable prices
+          </p>
+        </div>
+        <div class="cont">
+          <h1>Welcome Back</h1>
+          <fieldset>
+            <legend>Email</legend>
+            <input
+              type="email"
+              id="login-email"
+              required
+              placeholder="Enter your email"
+            />
+          </fieldset>
+          <fieldset>
+            <legend>Password</legend>
+            <input
+              type="password"
+              id="login-password"
+              placeholder="Enter your password"
+            />
+          </fieldset>
+          <input type="submit" value="Login" id="login-btn" />
+          <p id="login-msg"></p>
+          <p>
+            Don't have an account? <a href="#" id="show-register">Sign Up</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="register-page">
+      <!-- REGISTER FORM -->
+      <div class="main hide" id="register-form">
+        <div class="first">
+          <h1>Welcome to Lite <br />E-commerce Web Page</h1>
+          <p>
+            Lite E-Commerce web page a place where you can buy standard goods at
+            affordable prices
+          </p>
+        </div>
+        <div class="cont">
+          <h1>Sign Up</h1>
+          <fieldset>
+            <legend>Email</legend>
+            <input
+              type="email"
+              id="register-email"
+              placeholder="Enter your email"
+            />
+          </fieldset>
+          <fieldset>
+            <legend>Password</legend>
+            <input
+              type="password"
+              id="register-password"
+              placeholder="Min. 6 characters"
+            />
+          </fieldset>
+          <input type="submit" value="Sign Up" id="register-btn" />
+          <p id="register-msg"></p>
+          <p>Already have an account? <a href="#" id="show-login">Login</a></p>
+        </div>
+      </div>
+    </div>
+    <!-- <script src="script.js"></script> -->
+    <script type="module">
+     import { initializeApp } from "https://cdn.jsdelivr.net/npm/firebase@10.8.0/app/+esm";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://cdn.jsdelivr.net/npm/firebase@10.8.0/auth/+esm";
+      const firebaseConfig = {
+        apiKey: "AIzaSyCgXj6lOFcEyrZkrAqcGj0TUhtJUd6XX-g",
+        authDomain: "lite-ecommerce-63008.firebaseapp.com",
+        projectId: "lite-ecommerce-63008",
+        storageBucket: "lite-ecommerce-63008.firebasestorage.app",
+        messagingSenderId: "322956440279",
+        appId: "1:322956440279:web:55127df028b30dcc92f692",
+        measurementId: "G-X7TV3CMTSK",
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+
+      // ── Toggle between Login and Register ──
+      document.addEventListener("DOMContentLoaded", () => {
+        const loginFormContainer = document.getElementById("login-form");
+        const registerFormContainer = document.getElementById("register-form");
+        const showRegisterLink = document.getElementById("show-register");
+        const showLoginLink = document.getElementById("show-login");
+
+        const loginForm = document.getElementById("login-page");
+        const registerForm = document.getElementById("register-page");
+
+        // Function to switch forms
+        const switchForm = (formToShow, formToHide) => {
+          formToHide.classList.add("hide");
+          setTimeout(() => {
+            formToShow.classList.remove("hide");
+          }, 100);
+        };
+
+        // Event listener for showing the register form
+        showRegisterLink.addEventListener("click", (e) => {
+          e.preventDefault();
+          switchForm(registerFormContainer, loginFormContainer);
+        });
+
+        // Event listener for showing the login form
+        showLoginLink.addEventListener("click", (e) => {
+          e.preventDefault();
+          switchForm(loginFormContainer, registerFormContainer);
+        });
+      });
+
+      // ── LOGIN ──
+      document
+        .getElementById("login-btn")
+        .addEventListener("click", async () => {
+          const email = document.getElementById("login-email").value;
+          const password = document.getElementById("login-password").value;
+          const msg = document.getElementById("login-msg");
+
+          if (!email || !password) {
+            msg.className = "error-msg";
+            msg.textContent = "Please fill in all fields.";
+            return;
+          }
+
+          try {
+            const userCredential = await signInWithEmailAndPassword(
+              auth,
+              email,
+              password,
+            );
+            msg.className = "success-msg";
+            msg.textContent = "Login successful! Redirecting...";
+            setTimeout(() => {
+              window.location.href = "headphones.html";
+            }, 1500);
+          } catch (error) {
+            msg.className = "error-msg";
+            msg.textContent = getErrorMessage(error.code);
+          }
+        });
+
+      // ── SIGN UP ──
+      document
+        .getElementById("register-btn")
+        .addEventListener("click", async () => {
+          const email = document.getElementById("register-email").value;
+          const password = document.getElementById("register-password").value;
+          const msg = document.getElementById("register-msg");
+
+          if (!email || !password) {
+            msg.className = "error-msg";
+            msg.textContent = "Please fill in all fields.";
+            return;
+          }
+
+          try {
+            const userCredential = await createUserWithEmailAndPassword(
+              auth,
+              email,
+              password,
+            );
+            msg.className = "success-msg";
+            msg.textContent = "Account created! Redirecting to login...";
+            setTimeout(() => {
+              document.getElementById("register-form").classList.add("hide");
+              document.getElementById("login-form").classList.remove("hide");
+              document.getElementById("register-msg").textContent = "";
+            }, 1500);
+          } catch (error) {
+            msg.className = "error-msg";
+            msg.textContent = getErrorMessage(error.code);
+          }
+        });
+
+      // ── Friendly Error Messages ──
+      function getErrorMessage(code) {
+        switch (code) {
+          case "auth/invalid-email":
+            return "Invalid email address.";
+          case "auth/user-not-found":
+            return "No account found with this email.";
+          case "auth/wrong-password":
+            return "Incorrect password.";
+          case "auth/email-already-in-use":
+            return "This email is already registered.";
+          case "auth/weak-password":
+            return "Password must be at least 6 characters.";
+          case "auth/invalid-credential":
+            return "Invalid email or password.";
+          default:
+            return "Something went wrong. Please try again.";
+        }
+      }
+    </script>
+  </body>
+</html>
