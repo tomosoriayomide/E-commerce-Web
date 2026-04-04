@@ -313,64 +313,79 @@
     </script>
 
     <!--  Firebase module script: handles auth + orders with per-user localStorage -->
-    <script type="module">
-      import { initializeApp } from "https://cdn.jsdelivr.net/npm/firebase@10.8.0/app/+esm";
-      import { getAuth, onAuthStateChanged, signOut } from "https://cdn.jsdelivr.net/npm/firebase@10.8.0/auth/+esm";
+<script type="module">
+  import { initializeApp } from "https://cdn.jsdelivr.net/npm/firebase@10.8.0/app/+esm";
+  import {
+    getAuth,
+    onAuthStateChanged,
+    signOut,
+  } from "https://cdn.jsdelivr.net/npm/firebase@10.8.0/auth/+esm";
 
-      const firebaseConfig = {
-        apiKey: "AIzaSyCgXj6lOFcEyrZkrAqcGj0TUhtJUd6XX-g",
-        authDomain: "lite-ecommerce-63008.firebaseapp.com",
-        projectId: "lite-ecommerce-63008",
-        storageBucket: "lite-ecommerce-63008.firebasestorage.app",
-        messagingSenderId: "322956440279",
-        appId: "1:322956440279:web:55127df028b30dcc92f692",
-      };
+  const firebaseConfig = {
+    apiKey: "AIzaSyCgXj6lOFcEyrZkrAqcGj0TUhtJUd6XX-g",
+    authDomain: "lite-ecommerce-63008.firebaseapp.com",
+    projectId: "lite-ecommerce-63008",
+    storageBucket: "lite-ecommerce-63008.firebasestorage.app",
+    messagingSenderId: "322956440279",
+    appId: "1:322956440279:web:55127df028b30dcc92f692",
+  };
 
-      const app = initializeApp(firebaseConfig);
-      const auth = getAuth(app);
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
 
-      //  Single onAuthStateChanged: handles redirect, avatar, and loading saved order
-      onAuthStateChanged(auth, (user) => {
-        if (!user) {
+  // ONE onAuthStateChanged — handles everything
+  // The setTimeout gives Firebase time to restore the Google session
+  // before deciding to redirect to login
+  onAuthStateChanged(auth, (user) => {
+    if (!user) {
+      // Wait 2s for Firebase to finish restoring Google session
+      // Without this, Google redirect users get bounced back to login
+      setTimeout(() => {
+        if (!auth.currentUser) {
           window.location.href = "login.html";
-          return;
         }
+      }, 2000);
+      return;
+    }
 
-        // Set avatar initials
-        const initials = user.email.slice(0, 2).toUpperCase();
-        document.getElementById("profile-avatar").textContent = initials;
+    // User is logged in — set avatar and load cart
+    const initials = user.email.slice(0, 2).toUpperCase();
+    document.getElementById("profile-avatar").textContent = initials;
 
-        //  Load this user's saved cart count
-        const key = `order_${user.uid}`;
-        const savedOrder = localStorage.getItem(key);
-        if (savedOrder) {
-          document.getElementById("number").value = savedOrder;
-          document.getElementById("order").innerHTML = savedOrder;
-        }
-      });
+    const key = `order_${user.uid}`;
+    const savedOrder = localStorage.getItem(key);
+    if (savedOrder) {
+      document.getElementById("number").value = savedOrder;
+      document.getElementById("order").innerHTML = savedOrder;
+    }
 
-      // Logout
-      document.getElementById("logout-btn").addEventListener("click", async () => {
-        try {
-          await signOut(auth);
-          window.location.href = "login.html";
-        } catch (error) {
-          alert("Error logging out. Try again.");
-        }
-      });
+    // Expose saveCartCount for regular script
+    window.saveCartCount = (count) => {
+      localStorage.setItem(key, count);
+    };
+  });
 
-      //  orders() exposed to global scope, uses user UID as localStorage key
-      window.orders = function () {
-        const user = auth.currentUser;
-        if (!user) return;
+  // orders() — saves cart per user
+  window.orders = function () {
+    const user = auth.currentUser;
+    if (!user) return;
+    const key = `order_${user.uid}`;
+    const input = document.getElementById("number");
+    document.getElementById("order").innerHTML = input.value;
+    document.getElementById("added").innerHTML = input.value;
+    display();
+    localStorage.setItem(key, input.value);
+  };
 
-        const key = `order_${user.uid}`;
-        const input = document.getElementById("number");
-        document.getElementById("order").innerHTML = input.value;
-        document.getElementById("added").innerHTML = input.value;
-        display();
-        localStorage.setItem(key, input.value);
-      };
-    </script>
+  // Logout
+  document.getElementById("logout-btn").addEventListener("click", async () => {
+    try {
+      await signOut(auth);
+      window.location.href = "login.html";
+    } catch (error) {
+      alert("Error logging out. Try again.");
+    }
+  });
+</script>
   </body>
 </html>

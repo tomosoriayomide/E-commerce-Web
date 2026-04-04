@@ -20,14 +20,6 @@
         box-shadow: 1px 1px 15px 5px #6366f1;
         display: flex;
         gap: 20px;
-        animation: bounce 1s ease-in-out infinite alternate;
-      }
-      @keyframes bounce {
-        /* from { transform: scale(1); margin-top: 10%; } */
-        /* to { transform: scale(1.05); margin-top: 11%; } */
-      }
-      .main:hover {
-        animation: none;
       }
       .cont {
         width: 70%;
@@ -74,6 +66,22 @@
         margin-top: 8px;
         margin-left: 10%;
       }
+      .google-btn {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background: white;
+        cursor: pointer;
+        font-size: 15px;
+        margin-top: 12px;
+        margin-left: 10%;
+      }
+      .google-btn:hover {
+        box-shadow: 1px 1px 10px #ccc;
+      }
       @media screen and (max-width: 800px) {
         .main {
           flex-direction: column;
@@ -83,8 +91,8 @@
     </style>
   </head>
   <body>
+    <!-- LOGIN FORM -->
     <div id="login-page">
-      <!-- LOGIN FORM -->
       <div class="main" id="login-form">
         <div class="first">
           <h1>Welcome to Lite <br />E-commerce Web Page</h1>
@@ -117,11 +125,19 @@
           <p>
             Don't have an account? <a href="#" id="show-register">Sign Up</a>
           </p>
+          <button class="google-btn" id="google-btn-login">
+            <img
+              src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+              width="20"
+            />
+            Continue with Google
+          </button>
         </div>
       </div>
     </div>
+
+    <!-- REGISTER FORM -->
     <div id="register-page">
-      <!-- REGISTER FORM -->
       <div class="main hide" id="register-form">
         <div class="first">
           <h1>Welcome to Lite <br />E-commerce Web Page</h1>
@@ -151,13 +167,29 @@
           <input type="submit" value="Sign Up" id="register-btn" />
           <p id="register-msg"></p>
           <p>Already have an account? <a href="#" id="show-login">Login</a></p>
+          <button class="google-btn" id="google-btn-register">
+            <img
+              src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+              width="20"
+            />
+            Continue with Google
+          </button>
         </div>
       </div>
     </div>
-    <!-- <script src="script.js"></script> -->
+
     <script type="module">
-     import { initializeApp } from "https://cdn.jsdelivr.net/npm/firebase@10.8.0/app/+esm";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://cdn.jsdelivr.net/npm/firebase@10.8.0/auth/+esm";
+      import { initializeApp } from "https://cdn.jsdelivr.net/npm/firebase@10.8.0/app/+esm";
+      import {
+        getAuth,
+        createUserWithEmailAndPassword,
+        signInWithEmailAndPassword,
+        signInWithPopup, 
+        onAuthStateChanged,
+        GoogleAuthProvider,
+      } from "https://cdn.jsdelivr.net/npm/firebase@10.8.0/auth/+esm";
+
+      // Init Firebase first
       const firebaseConfig = {
         apiKey: "AIzaSyCgXj6lOFcEyrZkrAqcGj0TUhtJUd6XX-g",
         authDomain: "lite-ecommerce-63008.firebaseapp.com",
@@ -165,63 +197,68 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, si
         storageBucket: "lite-ecommerce-63008.firebasestorage.app",
         messagingSenderId: "322956440279",
         appId: "1:322956440279:web:55127df028b30dcc92f692",
-        measurementId: "G-X7TV3CMTSK",
       };
-
       const app = initializeApp(firebaseConfig);
       const auth = getAuth(app);
+      const provider = new GoogleAuthProvider();
 
-      // ── Toggle between Login and Register ──
-      document.addEventListener("DOMContentLoaded", () => {
-        const loginFormContainer = document.getElementById("login-form");
-        const registerFormContainer = document.getElementById("register-form");
-        const showRegisterLink = document.getElementById("show-register");
-        const showLoginLink = document.getElementById("show-login");
-
-        const loginForm = document.getElementById("login-page");
-        const registerForm = document.getElementById("register-page");
-
-        // Function to switch forms
-        const switchForm = (formToShow, formToHide) => {
-          formToHide.classList.add("hide");
-          setTimeout(() => {
-            formToShow.classList.remove("hide");
-          }, 100);
-        };
-
-        // Event listener for showing the register form
-        showRegisterLink.addEventListener("click", (e) => {
-          e.preventDefault();
-          switchForm(registerFormContainer, loginFormContainer);
+      // Google buttons
+      document
+        .getElementById("google-btn-login")
+        .addEventListener("click", async () => {
+          try {
+            const result = await signInWithPopup(auth, provider);
+            if (result.user) {
+              window.location.href = "headphones.html";
+            }
+          } catch (error) {
+            console.error("Google sign-in error:", error.message);
+          }
+        });
+      document
+        .getElementById("google-btn-register")
+        .addEventListener("click", async () => {
+          try {
+            const result = await signInWithPopup(auth, provider);
+            if (result.user) {
+              window.location.href = "headphones.html";
+            }
+          } catch (error) {
+            console.error("Google sign-in error:", error.message);
+          }
         });
 
-        // Event listener for showing the login form
-        showLoginLink.addEventListener("click", (e) => {
+      // Toggle forms
+      const loginFormContainer = document.getElementById("login-form");
+      const registerFormContainer = document.getElementById("register-form");
+
+      document
+        .getElementById("show-register")
+        .addEventListener("click", (e) => {
           e.preventDefault();
-          switchForm(loginFormContainer, registerFormContainer);
+          loginFormContainer.classList.add("hide");
+          setTimeout(() => registerFormContainer.classList.remove("hide"), 100);
         });
+      document.getElementById("show-login").addEventListener("click", (e) => {
+        e.preventDefault();
+        registerFormContainer.classList.add("hide");
+        setTimeout(() => loginFormContainer.classList.remove("hide"), 100);
       });
 
-      // ── LOGIN ──
+      // LOGIN
       document
         .getElementById("login-btn")
         .addEventListener("click", async () => {
           const email = document.getElementById("login-email").value;
           const password = document.getElementById("login-password").value;
           const msg = document.getElementById("login-msg");
-
           if (!email || !password) {
             msg.className = "error-msg";
             msg.textContent = "Please fill in all fields.";
             return;
           }
-
           try {
-            const userCredential = await signInWithEmailAndPassword(
-              auth,
-              email,
-              password,
-            );
+            await signInWithEmailAndPassword(auth, email, password);
             msg.className = "success-msg";
             msg.textContent = "Login successful! Redirecting...";
             setTimeout(() => {
@@ -233,31 +270,25 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, si
           }
         });
 
-      // ── SIGN UP ──
+      // SIGN UP
       document
         .getElementById("register-btn")
         .addEventListener("click", async () => {
           const email = document.getElementById("register-email").value;
           const password = document.getElementById("register-password").value;
           const msg = document.getElementById("register-msg");
-
           if (!email || !password) {
             msg.className = "error-msg";
             msg.textContent = "Please fill in all fields.";
             return;
           }
-
           try {
-            const userCredential = await createUserWithEmailAndPassword(
-              auth,
-              email,
-              password,
-            );
+            await createUserWithEmailAndPassword(auth, email, password);
             msg.className = "success-msg";
             msg.textContent = "Account created! Redirecting to login...";
             setTimeout(() => {
-              document.getElementById("register-form").classList.add("hide");
-              document.getElementById("login-form").classList.remove("hide");
+              registerFormContainer.classList.add("hide");
+              loginFormContainer.classList.remove("hide");
               document.getElementById("register-msg").textContent = "";
             }, 1500);
           } catch (error) {
@@ -266,7 +297,6 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, si
           }
         });
 
-      // ── Friendly Error Messages ──
       function getErrorMessage(code) {
         switch (code) {
           case "auth/invalid-email":
@@ -285,8 +315,6 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, si
             return "Something went wrong. Please try again.";
         }
       }
-       
-     
     </script>
   </body>
 </html>
