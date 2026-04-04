@@ -615,29 +615,16 @@
       let message = document.getElementById("message");
       let added = document.getElementById("added");
 
-      function orders() {
-        output.innerHTML = input.value;
-        added.innerHTML = input.value;
-        display();
-      }
+      
       function display() {
         message.style.display = "";
-        setTimeout(() => {
-          message.style.display = "none";
-        }, 2000);
-        if (input.value <= "1") {
-          message.innerHTML = input.value + " item added to cart";
-        }
-        if (input.value > "1") {
-          message.innerHTML = input.value + " items added to cart";
-        }
+        setTimeout(() => { message.style.display = "none"; }, 2000);
+        message.innerHTML = input.value <= 1
+          ? input.value + " item added to cart"
+          : input.value + " items added to cart";
       }
-      // email submission and validation
-      // let btn = document.getElementById("join");
-      // btn.innerHTML = "joined";
-      // setTimeout(() => {
-      //   btn.innerHTML = "join";
-      // }, 3000);
+
+      
       // Data structure for the different color variants
       const variants = {
         Indigo: { image: "images/indigo.jpeg", price: 24999.99 },
@@ -798,7 +785,39 @@
         }
       });
 
-      // 🚪 Logout
+      //  Single onAuthStateChanged: handles redirect, avatar, and loading saved order
+      onAuthStateChanged(auth, (user) => {
+        if (!user) {
+          window.location.href = "login.html";
+          return;
+        }
+
+        // Set avatar initials
+        const initials = user.email.slice(0, 2).toUpperCase();
+        document.getElementById("profile-avatar").textContent = initials;
+
+        //  Load this user's saved cart count
+        const key = `order_${user.uid}`;
+        const savedOrder = localStorage.getItem(key);
+        if (savedOrder) {
+          document.getElementById("number").value = savedOrder;
+          document.getElementById("order").innerHTML = savedOrder;
+        }
+      });
+
+       //  orders() exposed to global scope, uses user UID as localStorage key
+      window.orders = function () {
+        const user = auth.currentUser;
+        if (!user) return;
+
+        const key = `order_${user.uid}`;
+        const input = document.getElementById("number");
+        document.getElementById("order").innerHTML = input.value;
+        document.getElementById("added").innerHTML = input.value;
+        display();
+        localStorage.setItem(key, input.value);
+      };
+      //  Logout
       document
         .getElementById("logout-btn")
         .addEventListener("click", async () => {
@@ -809,16 +828,7 @@
             alert("Error logging out. Try again.");
           }
         });
-      onAuthStateChanged(auth, (user) => {
-        if (!user) {
-          window.location.href = "login.html";
-        } else {
-          // Get initials from email
-          const email = user.email;
-          const initials = email.slice(0, 2).toUpperCase(); // takes first 2 letters
-          document.getElementById("profile-avatar").textContent = initials;
-        }
-      });
+      
     </script>
   </body>
 </html>

@@ -25,10 +25,10 @@
         style="color: gray; text-decoration: none"
         >Collections</a
       >
-      <p id="male" onclick="men()">Sneakers</p>
-      <p id="female" onclick="women()">Headphones</p>
-      <p id="story" onclick="story()">Earbuds</p>
-      <p id="phone" onclick="phone()">Speakers</p>
+      <a href="/ecommerce.html" id="male" onclick="men()">Sneakers</a>
+      <a href="/headphones.html" id="female" onclick="women()">Headphones</a>
+      <a href="/earbuds.html" id="story" onclick="story()">Earbuds</a>
+      <a href="/speakers.html" id="phone" onclick="phone()">Speakers</a>
     </div>
     <div class="bgm" id="bgm" onclick="closeMenu()"></div>
     <div id="message">
@@ -54,8 +54,8 @@
               <p class="text">Fall Limited Edition Sneakers</p>
               <!-- <br> -->
               <p class="price">
-                $125.00 x <span id="ordered">1</span
-                ><span id="outcome">$125</span><span id="dots">.00</span>
+                $125.00 x <span id="order">1</span
+                ><span id="added">$125</span><span id="dots">.00</span>
               </p>
             </div>
             <div id="delete">
@@ -176,9 +176,19 @@
               onclick="colors()"
               >Sneakers</span
             >
-            <a href="/headphones.html" class="hover" id="hoverb" onclick="colored()">Headphones</a>
-            <a href="/earbuds.html" class="hover" id="hoverc" onclick="colora()">Earbuds</a>
-            <a href="#" class="hover" id="hoverd" onclick="colorb()">Speakers</a>
+            <a
+              href="/headphones.html"
+              class="hover"
+              id="hoverb"
+              onclick="colored()"
+              >Headphones</a
+            >
+            <a href="/earbuds.html" class="hover" id="hoverc" onclick="colora()"
+              >Earbuds</a
+            >
+            <a href="#" class="hover" id="hoverd" onclick="colorb()"
+              >Speakers</a
+            >
           </div>
         </div>
         <div class="cartall">
@@ -197,11 +207,7 @@
               id="cart2"
               onclick="closeCart()"
             />
-            <div
-              id="profile-avatar"
-            >
-              ?
-            </div>
+            <div id="profile-avatar">?</div>
             <button
               id="logout-btn"
               class="bg-orange-500 hover:bg-orange-600 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors"
@@ -335,36 +341,47 @@
 
     <script src="/newscript.js"></script>
     <script type="module">
-      import { initializeApp } from "https://cdn.jsdelivr.net/npm/firebase@10.8.0/app/+esm";
-      import {
-        getAuth,
-        onAuthStateChanged,
-        signOut,
-      } from "https://cdn.jsdelivr.net/npm/firebase@10.8.0/auth/+esm";
+        import { initializeApp } from "https://cdn.jsdelivr.net/npm/firebase@10.8.0/app/+esm";
+        import { getAuth, onAuthStateChanged, signOut } from "https://cdn.jsdelivr.net/npm/firebase@10.8.0/auth/+esm";
 
-      const firebaseConfig = {
-        apiKey: "AIzaSyCgXj6lOFcEyrZkrAqcGj0TUhtJUd6XX-g",
-        authDomain: "lite-ecommerce-63008.firebaseapp.com",
-        projectId: "lite-ecommerce-63008",
-        storageBucket: "lite-ecommerce-63008.firebasestorage.app",
-        messagingSenderId: "322956440279",
-        appId: "1:322956440279:web:55127df028b30dcc92f692",
-      };
+        const firebaseConfig = {
+          apiKey: "AIzaSyCgXj6lOFcEyrZkrAqcGj0TUhtJUd6XX-g",
+          authDomain: "lite-ecommerce-63008.firebaseapp.com",
+          projectId: "lite-ecommerce-63008",
+          storageBucket: "lite-ecommerce-63008.firebasestorage.app",
+          messagingSenderId: "322956440279",
+          appId: "1:322956440279:web:55127df028b30dcc92f692",
+        };
 
-      const app = initializeApp(firebaseConfig);
-      const auth = getAuth(app);
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
 
-      // 🔒 Protect page — redirect if not logged in
-      onAuthStateChanged(auth, (user) => {
-        if (!user) {
-          window.location.href = "login.html";
-        }
-      });
+        onAuthStateChanged(auth, (user) => {
+          if (!user) { window.location.href = "login.html"; return; }
 
-      // 🚪 Logout
-      document
-        .getElementById("logout-btn")
-        .addEventListener("click", async () => {
+          // Set avatar initials
+          document.getElementById("profile-avatar").textContent = user.email.slice(0, 2).toUpperCase();
+
+          // Load this user's saved cart number
+          const key = `cart_${user.uid}`;
+          const saved = localStorage.getItem(key);
+          if (saved && saved !== "0") {
+            document.getElementById("cartNo").innerHTML = saved;
+            document.getElementById("zero").innerHTML = saved;
+            document.getElementById("order").innerHTML = saved;
+            document.getElementById("added").innerHTML = "$" + (125 * saved);
+            document.getElementById("emptyCart").style.display = "none";
+            document.getElementById("active").style.display = "initial";
+          }
+
+          //  Expose saveCartCount so newscript.js can call it
+          window.saveCartCount = (count) => {
+            localStorage.setItem(key, count);
+          };
+        });
+
+        // Logout
+        document.getElementById("logout-btn").addEventListener("click", async () => {
           try {
             await signOut(auth);
             window.location.href = "login.html";
@@ -372,16 +389,7 @@
             alert("Error logging out. Try again.");
           }
         });
-      onAuthStateChanged(auth, (user) => {
-        if (!user) {
-          window.location.href = "login.html";
-        } else {
-          // Get initials from email
-          const email = user.email;
-          const initials = email.slice(0, 2).toUpperCase(); // takes first 2 letters
-          document.getElementById("profile-avatar").textContent = initials;
-        }
-      });
+      
     </script>
   </body>
 </html>
